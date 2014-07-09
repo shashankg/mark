@@ -1,0 +1,7 @@
+localhost:
+  webConfig:
+    baseUrl: www.mark.com
+
+  testConfig:
+    driverType: Firefox
+    globalSleepTimeInMS: 1000
