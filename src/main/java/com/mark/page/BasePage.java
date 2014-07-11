@@ -17,7 +17,6 @@ public abstract class BasePage<T> {
     private static final String BASE_URL = Config.getBaseUrl();
     public static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 
-
     private WebDriver webDriver;
     private long pageLoadTime = 20000;
     private long pageRefreshTime = 2000;
@@ -47,7 +46,7 @@ public abstract class BasePage<T> {
      * @param clazz
      * @return
      */
-    public T openPage(Class<T> clazz) {
+    protected T openPage(Class<T> clazz) {
         T page = PageFactory.initElements(getWebDriver(), clazz);
         logger.info("Opening the base with url: {} ", BASE_URL + getPageUrl());
         getWebDriver().get(BASE_URL + getPageUrl());
@@ -63,7 +62,7 @@ public abstract class BasePage<T> {
      *
      * @param pageLoadCondition
      */
-    public void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
+    private void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
         logger.info("[Wait for Page load] Condition: {} ", pageLoadCondition);
         Wait wait = new FluentWait(getWebDriver()).pollingEvery(pageRefreshTime,
                 TimeUnit.MILLISECONDS).withTimeout(pageLoadTime,
@@ -75,7 +74,7 @@ public abstract class BasePage<T> {
      * @param clazz
      * @return
      */
-    public T getPage(Class<T> clazz) {
+    protected T getPage(Class<T> clazz) {
         T page = PageFactory.initElements(getWebDriver(), clazz);
         ExpectedCondition pageLoadCondition = ((BasePage) page)
                 .getPageLoadCondition();
@@ -89,21 +88,21 @@ public abstract class BasePage<T> {
      *
      * @return
      */
-    public abstract ExpectedCondition getPageLoadCondition();
+    protected abstract ExpectedCondition getPageLoadCondition();
 
     /**
      * Provides page relative URL/
      *
      * @return
      */
-    public abstract String getPageUrl();
+    protected abstract String getPageUrl();
 
     /**
      * Provides webdriver
      *
      * @return
      */
-    public WebDriver getWebDriver() {
+    protected WebDriver getWebDriver() {
         return this.webDriver;
     }
 

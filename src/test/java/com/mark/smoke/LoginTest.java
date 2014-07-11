@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
     public void test_login_with_valid_credentials() throws Exception {
         LoginPage login = new LoginPage(getDriver()).openPage(LoginPage.class);
         login.login(username, password);
-        String message = login.getMessage();
+        String message = login.getMessage() ;
         Assert.assertEquals(message, "Login was successful");
     }
 
