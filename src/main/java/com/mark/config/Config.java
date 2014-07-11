@@ -87,10 +87,6 @@ public class Config {
             logger.error("[Config] Error while parsing config");
         }
     }
-
-    public static void main(String[] args) {
-        Config.getBaseUrl();
-    }
 }
 
 

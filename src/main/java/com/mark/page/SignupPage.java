@@ -1,6 +1,5 @@
 package com.mark.page;
 
-import com.shash.automationNG.core.ui.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
