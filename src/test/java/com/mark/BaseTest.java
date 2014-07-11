@@ -14,21 +14,22 @@ import java.lang.reflect.Method;
 
 public class BaseTest {
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
-    protected static final String BASE_URL = Config.getBaseUrl();
     private WebDriver driver;
 
     @BeforeClass
     public void setup() {
-        logger.info("[BaseTest] WebDriver used: {}", Config.getDriverType());
+        logger.info("[Setup] WebDriver used: {}", Config.getDriverType());
         this.driver = WebDriverFactory.prepareWebDriver();
         this.driver.manage().window();
+        logger.info("[Setup] Setup complete.");
     }
 
     @AfterClass
     public void tearDown() {
+        logger.info("[TearDown] Tearing down...");
         this.driver.close();
         this.driver.quit();
-        logger.info("[BaseTest] Tear down complete");
+        logger.info("[TearDown] Tear down complete");
     }
 
     @BeforeMethod
@@ -45,6 +46,9 @@ public class BaseTest {
         System.out.println();
     }
 
+    /**
+     * @return web driver
+     */
     protected WebDriver getDriver() {
         return this.driver;
     }

@@ -39,7 +39,7 @@ public class WebDriverFactory {
             case SAFARI:
                 return new SafariDriver();
             default:
-                logger.warn("DriverType is unknown, hence choosing firefox driver as default");
+                logger.warn("[WebDriver Factory] DriverType is unknown, hence choosing firefox driver as default");
                 return new FirefoxDriver();
         }
     }

@@ -38,12 +38,11 @@ public class LoginPage extends BasePage<LoginPage> {
      * @param password
      * @return this
      */
-    public LoginPage login(String username, String password) {
+    public void login(String username, String password) {
         logger.info("Trying to login with username: {}, password: {}" + username + " " + password);
         this.usernameField.sendKeys(username);
         this.passwordField.sendKeys(password);
         this.seleniumAction.click(loginButton);
-        return this;
     }
 
     /**
@@ -51,7 +50,7 @@ public class LoginPage extends BasePage<LoginPage> {
      *
      * @return this
      */
-    public LoginPage getLoginMessage() {
-        return this;
+    public String getMessage() {
+        return null;
     }
 }

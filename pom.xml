@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+
         <dependency>
             <artifactId>core</artifactId>
             <groupId>com.shash.automationNG</groupId>
@@ -20,6 +21,7 @@
             <groupId>com.shash.automationNG</groupId>
             <version>0.0.1</version>
         </dependency>
+
     </dependencies>
 
     <build>

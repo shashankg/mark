@@ -1,5 +1,6 @@
 package com.mark.page;
 
+import com.mark.config.Config;
 import com.shash.automationNG.core.ui.SeleniumAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -11,11 +12,15 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("unchecked")
 public abstract class BasePage<T> {
+    private static final String BASE_URL = Config.getBaseUrl();
+    public static final Logger logger = LoggerFactory.getLogger(BasePage.class);
+
+
     private WebDriver webDriver;
     private long pageLoadTime = 20000;
     private long pageRefreshTime = 2000;
-    public static final Logger logger = LoggerFactory.getLogger(BasePage.class);
     public SeleniumAction seleniumAction;
 
     /**
@@ -37,16 +42,15 @@ public abstract class BasePage<T> {
     }
 
     /**
-     * Open page
+     * Open a page
      *
      * @param clazz
-     * @param baseUrl
-     * @return page
+     * @return
      */
-    public T openPage(Class<T> clazz, String baseUrl) {
+    public T openPage(Class<T> clazz) {
         T page = PageFactory.initElements(getWebDriver(), clazz);
-        logger.info("Opening the base with url: {} ", baseUrl + getPageUrl());
-        getWebDriver().get(baseUrl + getPageUrl());
+        logger.info("Opening the base with url: {} ", BASE_URL + getPageUrl());
+        getWebDriver().get(BASE_URL + getPageUrl());
         getWebDriver().manage().window().maximize();
         ExpectedCondition pageLoadCondition = ((BasePage) page)
                 .getPageLoadCondition();
