@@ -46,7 +46,7 @@ public abstract class BasePage<T> {
      * @param clazz
      * @return
      */
-    protected T openPage(Class<T> clazz) {
+    public T openPage(Class<T> clazz) {
         T page = PageFactory.initElements(getWebDriver(), clazz);
         logger.info("Opening the base with url: {} ", BASE_URL + getPageUrl());
         getWebDriver().get(BASE_URL + getPageUrl());
@@ -74,7 +74,7 @@ public abstract class BasePage<T> {
      * @param clazz
      * @return
      */
-    protected T getPage(Class<T> clazz) {
+    public T getPage(Class<T> clazz) {
         T page = PageFactory.initElements(getWebDriver(), clazz);
         ExpectedCondition pageLoadCondition = ((BasePage) page)
                 .getPageLoadCondition();
