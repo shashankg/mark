@@ -1,4 +1,4 @@
-package com.mark.page;
+package com.mark.resource;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -16,9 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class BasePage<T> {
     protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
-    protected String url;
     protected WebDriver driver;
-    private ExpectedCondition pageLoadCondition;
 
     /**
      * Constructor
@@ -43,7 +41,7 @@ public abstract class BasePage<T> {
     }
 
     @SuppressWarnings("unchecked")
-    protected void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
+    private void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
         logger.info("[Wait for Page load] Condition: {} ", pageLoadCondition);
         Wait wait = new FluentWait(driver).pollingEvery(2000,
                 TimeUnit.MILLISECONDS).withTimeout(10000,
@@ -64,13 +62,6 @@ public abstract class BasePage<T> {
      * @return
      */
     public abstract String getPageUrl();
-
-    /**
-     * Returns the default url
-     */
-    public String getUrl() {
-        return url;
-    }
 
     /**
      * Send text keys to the element that finds by cssSelector.
