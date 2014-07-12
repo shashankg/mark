@@ -14,13 +14,13 @@ import java.lang.reflect.Method;
 
 public class BaseTest {
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
+    protected static final String BASE_URL = Config.getBaseUrl();
     private WebDriver driver;
 
     @BeforeClass
     public void setup() {
         logger.info("[Setup] WebDriver used: {}", Config.getDriverType());
         this.driver = WebDriverFactory.prepareWebDriver();
-        this.driver.manage().window();
         logger.info("[Setup] Setup complete.");
     }
 

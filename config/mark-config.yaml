@@ -1,7 +1,7 @@
 localhost:
   webConfig:
-    baseUrl: www.mark.com
+    baseUrl: http://www.landmarkshops.com/
 
   testConfig:
     driverType: Firefox
-    globalSleepTimeInMS: 1000
+    globalSleepTimeInMS: 10000

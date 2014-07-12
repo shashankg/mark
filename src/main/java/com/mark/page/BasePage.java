@@ -1,8 +1,9 @@
 package com.mark.page;
 
-import com.mark.config.Config;
-import com.shash.automationNG.core.ui.SeleniumAction;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -12,75 +13,42 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
-@SuppressWarnings("unchecked")
+
 public abstract class BasePage<T> {
-    private static final String BASE_URL = Config.getBaseUrl();
-    public static final Logger logger = LoggerFactory.getLogger(BasePage.class);
-
-    private WebDriver webDriver;
-    private long pageLoadTime = 20000;
-    private long pageRefreshTime = 2000;
-    public SeleniumAction seleniumAction;
+    protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
+    protected String url;
+    protected WebDriver driver;
+    private ExpectedCondition pageLoadCondition;
 
     /**
-     * Instantiates a new base page.
+     * Constructor
      */
-    public BasePage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        this.seleniumAction = new SeleniumAction(webDriver);
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
     }
 
     /**
-     * Instantiates a new base page.
-     */
-    public BasePage(WebDriver webDriver, long pageLoadTime, long pageRefreshTime) {
-        this.webDriver = webDriver;
-        this.pageLoadTime = pageLoadTime;
-        this.pageRefreshTime = pageRefreshTime;
-        this.seleniumAction = new SeleniumAction(webDriver);
-    }
-
-    /**
-     * Open a page
-     *
      * @param clazz
+     * @param baseUrl
      * @return
      */
-    public T openPage(Class<T> clazz) {
-        T page = PageFactory.initElements(getWebDriver(), clazz);
-        logger.info("Opening the base with url: {} ", BASE_URL + getPageUrl());
-        getWebDriver().get(BASE_URL + getPageUrl());
-        getWebDriver().manage().window().maximize();
-        ExpectedCondition pageLoadCondition = ((BasePage) page)
-                .getPageLoadCondition();
+    public T openPage(Class<T> clazz, String baseUrl) {
+        T page = PageFactory.initElements(driver, clazz);
+        logger.info("Opening the base with url: {} ", baseUrl + getPageUrl());
+        driver.get(baseUrl + getPageUrl());
+        driver.manage().window();
+        ExpectedCondition pageLoadCondition = ((BasePage) page).getPageLoadCondition();
         waitForPageToLoad(pageLoadCondition);
         return page;
     }
 
-    /**
-     * Wait for page to load
-     *
-     * @param pageLoadCondition
-     */
-    private void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
+    @SuppressWarnings("unchecked")
+    protected void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
         logger.info("[Wait for Page load] Condition: {} ", pageLoadCondition);
-        Wait wait = new FluentWait(getWebDriver()).pollingEvery(pageRefreshTime,
-                TimeUnit.MILLISECONDS).withTimeout(pageLoadTime,
+        Wait wait = new FluentWait(driver).pollingEvery(2000,
+                TimeUnit.MILLISECONDS).withTimeout(10000,
                 TimeUnit.MICROSECONDS);
         wait.until(pageLoadCondition);
-    }
-
-    /**
-     * @param clazz
-     * @return
-     */
-    public T getPage(Class<T> clazz) {
-        T page = PageFactory.initElements(getWebDriver(), clazz);
-        ExpectedCondition pageLoadCondition = ((BasePage) page)
-                .getPageLoadCondition();
-        waitForPageToLoad(pageLoadCondition);
-        logger.info("Navigating to {} page", clazz.getName());
-        return page;
     }
 
     /**
@@ -91,32 +59,91 @@ public abstract class BasePage<T> {
     protected abstract ExpectedCondition getPageLoadCondition();
 
     /**
-     * Provides page relative URL/
+     * Provides page relative url/
      *
      * @return
      */
-    protected abstract String getPageUrl();
+    public abstract String getPageUrl();
 
     /**
-     * Provides webdriver
+     * Returns the default url
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * Send text keys to the element that finds by cssSelector.
+     * It shortens "driver.findElement(By.cssSelector()).sendKeys()".
      *
-     * @return
+     * @param cssSelector
+     * @param text
      */
-    protected WebDriver getWebDriver() {
-        return this.webDriver;
+    protected void sendTextByCss(String cssSelector, String text) {
+        driver.findElement(By.cssSelector(cssSelector)).sendKeys(text);
     }
 
     /**
-     * @return pageLoadTime
+     * Is the text present in page.
      */
-    public long getPageLoadTime() {
-        return pageLoadTime;
+    public boolean isTextPresent(String text) {
+        return driver.getPageSource().contains(text);
     }
 
     /**
-     * @return pageRefreshTime
+     * Is the Element in page.
      */
-    public long getPageRefreshTime() {
-        return pageRefreshTime;
+    public boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Is the Element present in the DOM.
+     *
+     * @param _cssSelector element locator
+     * @return WebElement
+     */
+    public boolean isElementPresent(String _cssSelector) {
+        try {
+            driver.findElement(By.cssSelector(_cssSelector));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * Checks if the element is in the DOM and displayed.
+     *
+     * @param by - selector to find the element
+     * @return true or false
+     */
+    public boolean isElementPresentAndDisplay(By by) {
+        try {
+            return driver.findElement(by).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the first WebElement using the given method.
+     * It shortens "driver.findElement(By)".
+     *
+     * @param by element locator.
+     * @return the first WebElement
+     */
+    public WebElement getWebElement(By by) {
+        return driver.findElement(by);
+    }
+
+    protected WebDriver getDriver() {
+        return driver;
     }
 }
