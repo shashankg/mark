@@ -11,12 +11,15 @@ import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
+@SuppressWarnings("unchecked")
 public abstract class BasePage<T> {
     protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
-    protected WebDriver driver;
+    private static final long REFRESH_RATE = 2000;
+    private static final long PAGE_LOAD_TIME_OUT = 10000;
+    private WebDriver driver;
 
     /**
      * Constructor
@@ -32,7 +35,7 @@ public abstract class BasePage<T> {
      */
     public T openPage(Class<T> clazz, String baseUrl) {
         T page = PageFactory.initElements(driver, clazz);
-        logger.info("Opening the base with url: {} ", baseUrl + getPageUrl());
+        logger.info("[Base Page] Opening the url: {} ", baseUrl + getPageUrl());
         driver.get(baseUrl + getPageUrl());
         driver.manage().window();
         ExpectedCondition pageLoadCondition = ((BasePage) page).getPageLoadCondition();
@@ -43,10 +46,22 @@ public abstract class BasePage<T> {
     @SuppressWarnings("unchecked")
     private void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
         logger.info("[Wait for Page load] Condition: {} ", pageLoadCondition);
-        Wait wait = new FluentWait(driver).pollingEvery(2000,
-                TimeUnit.MILLISECONDS).withTimeout(10000,
-                TimeUnit.MICROSECONDS);
+        Wait wait = new FluentWait(driver).pollingEvery(REFRESH_RATE, TimeUnit.MILLISECONDS).
+                withTimeout(PAGE_LOAD_TIME_OUT, TimeUnit.MICROSECONDS);
         wait.until(pageLoadCondition);
+    }
+
+    /**
+     * @param clazz
+     * @return
+     */
+    public T getPage(Class<T> clazz) {
+        T page = PageFactory.initElements(getDriver(), clazz);
+        ExpectedCondition pageLoadCondition = ((BasePage) page)
+                .getPageLoadCondition();
+        waitForPageToLoad(pageLoadCondition);
+        logger.info("Navigating to {} page", clazz);
+        return page;
     }
 
     /**
@@ -120,6 +135,22 @@ public abstract class BasePage<T> {
             return driver.findElement(by).isDisplayed();
         } catch (NoSuchElementException e) {
             return false;
+        }
+    }
+
+    /**
+     * Selection from a drop down list
+     *
+     * @param by
+     * @param selection
+     */
+    protected void selectFromDropDown(By by, String selection) {
+        WebElement element = getDriver().findElement(by);
+        List<WebElement> dropDownOptions = element.findElements(By.tagName("option"));
+        for (WebElement value : dropDownOptions) {
+            if (value.getText().equalsIgnoreCase(selection)) {
+                value.click();
+            }
         }
     }
 
