@@ -1,5 +1,7 @@
 package com.mark.page;
 
+import com.mark.config.Config;
+import com.shash.automationNG.core.ui.SeleniumAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -12,8 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
-
-
+@SuppressWarnings("unchecked")
 public abstract class BasePage<T> {
     protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
     protected String url;
