@@ -1,10 +1,7 @@
 package com.mark;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -83,7 +80,7 @@ public class ExampleTest {
 
 
         String str = driver.getTitle();
-        System.out.print(driver.getTitle().toString());
+        System.out.print(driver.getTitle());
         Assert.assertEquals(str,"Online Shopping for Clothing, Baby Products & Electronics at LandmarkShops.com");
         Actions build = new Actions(driver);
         WebElement hover = driver.findElement(By.xpath(".//*[@id='electronics']/a"));
@@ -115,6 +112,9 @@ public class ExampleTest {
         driver.findElement(By.id("phone")).sendKeys("123456789");
         driver.findElement(By.xpath(".//*[@id='createLMGAddressForm']/div[2]/input")).click();
         driver.findElement(By.id("sameBillingAsShipping")).click();
+
+
+
         driver.findElement(By.id("ccf-number")).sendKeys("5566204900066815");
         driver.findElement(By.id("ccf-name")).sendKeys("test");
 

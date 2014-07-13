@@ -2,10 +2,7 @@ package com.mark.resource.component;
 
 import com.mark.exception.MarkException;
 import com.mark.resource.BasePage;
-import com.mark.resource.page.AccountPage;
-import com.mark.resource.page.OrderHistoryPage;
-import com.mark.resource.page.ShukranPage;
-import com.mark.resource.page.SignupPage;
+import com.mark.resource.page.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -26,6 +23,11 @@ public class Header extends BasePage<Header> {
     private static final String LOGOUT_LINK = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[4]/a";
 
     private static final String FORGOT_PASSWORD_LINK_ID = "";
+
+    private static final String BASKET_ID = "";
+    private static final String VIEW_BASKET_ID = "";
+    private static final String BASKET_REMOVE_ITEM_ID = "";
+    private static final String BASKET_CHECKOUT_IT = "";
 
     public Header(WebDriver webDriver) {
         super(webDriver);
@@ -108,5 +110,11 @@ public class Header extends BasePage<Header> {
 
         clickAtLogin();
         getWebElement(By.xpath(LOGOUT_LINK)).click();
+    }
+
+    public BasketPage navigateToBasketPage() {
+        getWebElement(By.id(BASKET_ID)).click();
+        getWebElement(By.id(VIEW_BASKET_ID)).click();
+        return new BasketPage(getDriver()).getPage(BasketPage.class);
     }
 }
