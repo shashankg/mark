@@ -20,10 +20,10 @@ public class Header extends BasePage<Header> {
     private static final String PASSWORD_ID = "j_password";
     private static final String LOGIN_BUTTON_ID = "login";
 
-    private static final String MY_ACCOUNT_ID = "";
-    private static final String ORDER_HISTORY_ID = "";
-    private static final String SHUKRAN_ID = "";
-    private static final String LOGOUT_LINK = "";
+    private static final String MY_ACCOUNT_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[1]";
+    private static final String ORDER_HISTORY_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[2]";
+    private static final String SHUKRAN_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[3]/a";
+    private static final String LOGOUT_LINK = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[4]/a";
 
     public Header(WebDriver webDriver) {
         super(webDriver);
@@ -82,7 +82,7 @@ public class Header extends BasePage<Header> {
             throw new MarkException("[Header] User is not logged in.");
 
         clickAtLogin();
-        getWebElement(By.id(ORDER_HISTORY_ID)).click();
+        getWebElement(By.xpath(ORDER_HISTORY_ID)).click();
         return new OrderHistoryPage(getDriver()).getPage(OrderHistoryPage.class);
     }
 
@@ -91,7 +91,7 @@ public class Header extends BasePage<Header> {
             throw new MarkException("[Header] User is not logged in.");
 
         clickAtLogin();
-        getWebElement(By.id(SHUKRAN_ID)).click();
+        getWebElement(By.xpath(SHUKRAN_ID)).click();
         return new ShukranPage(getDriver()).getPage(ShukranPage.class);
     }
 
@@ -100,6 +100,6 @@ public class Header extends BasePage<Header> {
             throw new MarkException("[Header] User is not logged in.");
 
         clickAtLogin();
-        getWebElement(By.id(LOGOUT_LINK)).click();
+        getWebElement(By.xpath(LOGOUT_LINK)).click();
     }
 }
