@@ -25,6 +25,8 @@ public class Header extends BasePage<Header> {
     private static final String SHUKRAN_ID = "";
     private static final String LOGOUT_LINK = "";
 
+    private static final String FORGOT_PASSWORD_LINK_ID = "";
+
     public Header(WebDriver webDriver) {
         super(webDriver);
     }
@@ -48,8 +50,13 @@ public class Header extends BasePage<Header> {
         getWebElement(By.id(LOGIN_BUTTON_ID)).click();
     }
 
-    public void clickAtLogin() {
+    private void clickAtLogin() {
         getWebElement(By.xpath(LOGIN_LINK_XPATH)).click();
+    }
+
+    public void clickAtForgotPassword() {
+        clickAtLogin();
+        getWebElement(By.xpath(FORGOT_PASSWORD_LINK_ID)).click();
     }
 
     public SignupPage navigateToSignUp() {

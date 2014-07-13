@@ -54,6 +54,8 @@ public class LoginPage extends BasePage<LoginPage> {
     }
 
     /**
+     * Login functionality
+     *
      * @param email
      * @param password
      */
