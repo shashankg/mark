@@ -1,6 +1,6 @@
 package com.mark;
 
-import com.mark.config.Config;
+import com.mark.configuration.Configuration;
 import com.mark.factory.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -14,12 +14,12 @@ import java.lang.reflect.Method;
 
 public class BaseTest {
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
-    protected static final String BASE_URL = Config.getBaseUrl();
+    protected static final String BASE_URL = Configuration.getBaseUrl();
     private WebDriver driver;
 
     @BeforeClass
     public void setup() {
-        logger.info("[Setup] WebDriver used: {}", Config.getDriverType());
+        logger.info("[Setup] WebDriver used: {}", Configuration.getDriverType());
         this.driver = WebDriverFactory.prepareWebDriver();
         logger.info("[Setup] Setup complete.");
     }

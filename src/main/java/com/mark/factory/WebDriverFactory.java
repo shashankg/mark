@@ -1,6 +1,6 @@
 package com.mark.factory;
 
-import com.mark.config.Config;
+import com.mark.configuration.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -24,7 +24,7 @@ public class WebDriverFactory {
      * @return the web driver
      */
     public static WebDriver prepareWebDriver() {
-        DriverType browserType = DriverType.valueOf(Config.getDriverType().trim().toUpperCase());
+        DriverType browserType = DriverType.valueOf(Configuration.getDriverType().trim().toUpperCase());
         logger.info("Preparing WebDriver with browserType {}", browserType);
 
         switch (browserType) {

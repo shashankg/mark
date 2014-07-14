@@ -1,4 +1,4 @@
-package com.mark.config;
+package com.mark.configuration;
 
 import com.mark.exception.MarkException;
 import com.shash.automationNG.utils.jsonUtil.ObjectMapperUtil;
@@ -11,15 +11,14 @@ import java.io.IOException;
 import java.util.Map;
 
 @SuppressWarnings("unchecked")
-public class Config {
-    private static final Logger logger = LoggerFactory.getLogger(Config.class);
+public class Configuration {
+    private static final Logger logger = LoggerFactory.getLogger(Configuration.class);
     private static final String CONFIG_FILE = "./config/mark-config.yaml";
     private static final String ENV_VARIABLE = "TARGET_ENV";
 
     private static String baseUrl;
     private static String driverType;
     private static Long globalSleepTimeInMS;
-
 
     private static Map configMap = null;
 
@@ -80,6 +79,9 @@ public class Config {
         return globalSleepTimeInMS;
     }
 
+    /**
+     * print configuration
+     */
     private static void printConfig() {
         try {
             logger.info("[Config] Test Config Used: {}", ObjectMapperUtil.instance().writeValueAsString(configMap));

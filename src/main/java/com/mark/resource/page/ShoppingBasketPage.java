@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class BasketPage extends BasePage<BasketPage> {
+public class ShoppingBasketPage extends BasePage<ShoppingBasketPage> {
     private static final String CHECKOUT_NOW_CLASS = "checkout";
     private static final String REMOVE_ITEM_ID = "";
 
@@ -15,7 +15,7 @@ public class BasketPage extends BasePage<BasketPage> {
      *
      * @param driver
      */
-    public BasketPage(WebDriver driver) {
+    public ShoppingBasketPage(WebDriver driver) {
         super(driver);
     }
 

@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignupPage extends BasePage<SignupPage> {
-
     private static final String FIRST_NAME_ID = "firstName";
     private static final String LAST_NAME_ID = "lastName";
     private static final String EMAIL_ID = "email";
@@ -20,6 +19,8 @@ public class SignupPage extends BasePage<SignupPage> {
     private static final String CONFIRM_PASSWORD_ID = "confirmPassword";
     private static final String GENDER_ID = "gender";
     private static final String SIGN_UP_XPATH = ".//*[@id='registerForm']/fieldset/div[8]/input";
+
+    private static final String ERROR_MESSAGE_ID = "";
 
     private Header header;
     private Footer footer;
@@ -78,5 +79,29 @@ public class SignupPage extends BasePage<SignupPage> {
         selectFromDropDown(By.id(GENDER_ID), gender);
         getWebElement(By.xpath(SIGN_UP_XPATH)).submit();
         return new AccountPage(getDriver()).getPage(AccountPage.class);
+    }
+
+    /**
+     * Is sign up parameters present
+     *
+     * @return
+     */
+    public boolean isSignupParamDisplayed() {
+        return isElementPresentAndDisplay(By.id(FIRST_NAME_ID)) &&
+                isElementPresentAndDisplay(By.id(LAST_NAME_ID)) &&
+                isElementPresentAndDisplay(By.id(EMAIL_ID)) &&
+                isElementPresentAndDisplay(By.id(PASSWORD_ID)) &&
+                isElementPresentAndDisplay(By.id(CONFIRM_PASSWORD_ID)) &&
+                isElementPresentAndDisplay(By.id(GENDER_ID)) &&
+                isElementPresentAndDisplay(By.xpath(SIGN_UP_XPATH));
+    }
+
+    /**
+     * Return error message is any while sign up
+     *
+     * @return
+     */
+    public String getErrorMessage() {
+        return getWebElement(By.id(ERROR_MESSAGE_ID)).getText();
     }
 }
