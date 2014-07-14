@@ -12,13 +12,13 @@
 
         <dependency>
             <artifactId>core</artifactId>
-            <groupId>com.shash.automationNG</groupId>
+            <groupId>com.shash.autoNG</groupId>
             <version>0.0.1</version>
         </dependency>
 
         <dependency>
             <artifactId>utils</artifactId>
-            <groupId>com.shash.automationNG</groupId>
+            <groupId>com.shash.autoNG</groupId>
             <version>0.0.1</version>
         </dependency>
 
