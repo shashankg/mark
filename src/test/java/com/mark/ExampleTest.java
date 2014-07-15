@@ -1,20 +1,17 @@
 package com.mark;
-import com.sun.swing.internal.plaf.synth.resources.synth_sv;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ExampleTest {
 
     public static void main(String args[]) {
         WebDriver driver = new FirefoxDriver();
-       // String baseURL = "http://www.landmarkshops.com/";
+        // String baseURL = "http://www.landmarkshops.com/";
         String baseURL = "http://www.landmarkshops.com/Electronics/Electronics/Audio/Headphone-%26-Earphones/Earbud-%26-In-Ear-Headphones/Sennheiser-CX-300-II-Earphones---Chrome/p/154007163";
 
         driver.manage().window().maximize();
@@ -69,8 +66,6 @@ public class ExampleTest {
 //        driver.findElement(By.id("text1")).sendKeys("");
 //        driver.findElement(By.xpath(".//*[@id='search']/fieldset/input")).click();
 //        Assert.assertEquals(driver.findElement(By.xpath(".//*[@id='main']/div/div[2]/h3")).getText(), "Sorry there are no matches for 'What are you looking for?'");
-
-
 
 
 //
@@ -151,20 +146,20 @@ public class ExampleTest {
         }
         //driver.findElement(By.xpath(".//*[@id='154595059']/span[2]/a")).click();
         driver.findElement(By.className("deleteRowButton")).click();
-       //WebElement str = driver.findElement(By.xpath(".//*[@id='wrap-basket-template']/a/strong/span"));
+        //WebElement str = driver.findElement(By.xpath(".//*[@id='wrap-basket-template']/a/strong/span"));
         driver.navigate().refresh();
         WebElement str = driver.findElement(By.className("basket-count"));
         driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
         System.out.println(str.getText());
 
-        if(str.getText().contains("0"))
+        if (str.getText().contains("0"))
 
         {
-           System.out.print("Item Removed");
+            System.out.print("Item Removed");
         }
 
 
-       //driver.close();
+        //driver.close();
 
     }
 }

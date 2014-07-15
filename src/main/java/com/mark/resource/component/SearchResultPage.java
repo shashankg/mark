@@ -1,6 +1,7 @@
 package com.mark.resource.component;
 
 import com.mark.resource.BasePage;
+import com.mark.resource.page.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SearchResultPage extends BasePage<SearchResultPage> {
     private static final String ERROR_MESSAGE_ID = "";
+    private static final String FIRST_ITEM_XPATH = ".//*[@id='main']/div/div[2]/fieldset/div[1]/div[2]/div[1]/div[2]/h4/a";
 
     /**
      * Constructor
@@ -44,5 +46,15 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
      */
     public String getErrorMessage() {
         return getWebElement(By.id(ERROR_MESSAGE_ID)).getText();
+    }
+
+    /**
+     * Click on the 2nd item of search result
+     *
+     * @return
+     */
+    public ProductPage clickOnFirstItem() {
+        getWebElement(By.xpath(FIRST_ITEM_XPATH)).click();
+        return new ProductPage(getDriver()).getPage(ProductPage.class);
     }
 }

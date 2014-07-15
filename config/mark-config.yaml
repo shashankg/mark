@@ -4,4 +4,4 @@ localhost:
 
   testConfig:
     driverType: Firefox
-    globalSleepTimeInMS: 10000
+    globalSleepTimeInMS: 5000

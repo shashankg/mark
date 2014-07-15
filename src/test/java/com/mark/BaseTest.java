@@ -26,10 +26,10 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown() {
-        logger.info("[TearDown] Tearing down...");
-        this.driver.close();
-        this.driver.quit();
-        logger.info("[TearDown] Tear down complete");
+//        logger.info("[TearDown] Tearing down...");
+//        this.driver.close();
+//        this.driver.quit();
+//        logger.info("[TearDown] Tear down complete");
     }
 
     @BeforeMethod

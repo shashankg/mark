@@ -1,5 +1,7 @@
 package com.mark.resource;
 
+import com.mark.configuration.Configuration;
+import com.shash.autoNG.utils.clockUtil.ClockUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -167,5 +169,17 @@ public abstract class BasePage<T> {
 
     protected WebDriver getDriver() {
         return driver;
+    }
+
+    public void refresh() {
+        driver.navigate().refresh();
+    }
+
+    public void waitFor(String reason) {
+        try {
+            ClockUtil.sleepingFor(reason, Configuration.getGlobalSleepTimeInMS());
+        } catch (InterruptedException e) {
+            logger.info("Unable to wait, Error: {}", e.getMessage());
+        }
     }
 }

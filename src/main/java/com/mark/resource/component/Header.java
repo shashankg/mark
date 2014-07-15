@@ -25,11 +25,12 @@ public class Header extends BasePage<Header> {
     private static final String FORGOT_PASSWORD_LINK_ID = "";
     private static final String LOGIN_VIA_FACEBOOK_ID = "";
 
-    private static final String BASKET_ID = "";
-    private static final String VIEW_BASKET_ID = "";
-    private static final String BASKET_REMOVE_ITEM_ID = "";
-    private static final String BASKET_CHECKOUT_IT = "";
+    private static final String BASKET_CLASS = "basket btn-open";
+    private static final String VIEW_BASKET_XPATH = ".//*[@id='wrap-basket-template']/div/table/tbody/tr[1]/td/a/span";
+    private static final String BASKET_CHECKOUT_CLASS = "basket_checkout_button_class";
     private static final String LOGIN_ERROR_MESSAGE_ID = "";
+    private static final String BASKET_ITEM_COUNT_CLASS = "basket-count";
+    private static final String BASKET_FIRST_ITEM_REMOVE_LINK_CLASS = "deleteRowButton";
 
     public Header(WebDriver webDriver) {
         super(webDriver);
@@ -107,8 +108,8 @@ public class Header extends BasePage<Header> {
     }
 
     public ShoppingBasketPage navigateToBasketPage() {
-        getWebElement(By.id(BASKET_ID)).click();
-        getWebElement(By.id(VIEW_BASKET_ID)).click();
+        getWebElement(By.className(BASKET_CLASS)).click();
+        getWebElement(By.xpath(VIEW_BASKET_XPATH)).click();
         return new ShoppingBasketPage(getDriver()).getPage(ShoppingBasketPage.class);
     }
 
@@ -180,5 +181,40 @@ public class Header extends BasePage<Header> {
         boolean isDisplayed = isElementPresentAndDisplay(By.xpath(LOGIN_VIA_FACEBOOK_ID));
         clickAtLogin();
         return isDisplayed;
+    }
+
+    /**
+     * @return
+     */
+    public int getShoppingBasketItemCount() {
+        return Integer.parseInt(getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).getText());
+
+    }
+
+    /**
+     * if basket flyout visible
+     *
+     * @return
+     */
+    public boolean isBasketFlyoutVisible() {
+        return isElementPresentAndDisplay(By.className(BASKET_ITEM_COUNT_CLASS));
+    }
+
+    /**
+     * if basket flyout enabled
+     *
+     * @return
+     */
+    public boolean isBasketFlyoutEnabled() {
+        getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).click();
+        return isElementPresentAndDisplay(By.xpath(VIEW_BASKET_XPATH));
+    }
+
+    /**
+     * Remove first item from the basket
+     */
+    public void removeFirstItemFromBasket() {
+        getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).click();
+        getWebElement(By.className(BASKET_FIRST_ITEM_REMOVE_LINK_CLASS)).click();
     }
 }
