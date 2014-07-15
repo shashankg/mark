@@ -11,12 +11,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountPage extends BasePage<AccountPage> {
 
-    private static final String MY_DETAILS_ID = "";
-    private static final String ADDRESS_BOOK_ID = "";
-    private static final String PAYMENT_OPTION_ID = "";
-    private static final String ORDER_HISTORY_ID = "";
-    private static final String MY_REVIEWS_ID = "";
-    private static final String SHUKRAN_ID = "";
+    private static final String MY_DETAILS_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[2]/a";
+    private static final String ADDRESS_BOOK_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[3]/a";
+    private static final String PAYMENT_OPTION_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[4]/a";
+    private static final String ORDER_HISTORY_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[5]/a";
+    private static final String MY_REVIEWS_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[6]/a";
+    private static final String SHUKRAN_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[7]/a";
 
     private Header header;
     private Footer footer;
@@ -57,32 +57,32 @@ public class AccountPage extends BasePage<AccountPage> {
     }
 
     public MyDetailsPage navigateToMyDetails() {
-        getWebElement(By.id(MY_DETAILS_ID)).click();
+        getWebElement(By.id(MY_DETAILS_XPATH)).click();
         return new MyDetailsPage(getDriver()).getPage(MyDetailsPage.class);
     }
 
     public AddressBookPage navigateToAddressBook() {
-        getWebElement(By.id(ADDRESS_BOOK_ID)).click();
+        getWebElement(By.id(ADDRESS_BOOK_XPATH)).click();
         return new AddressBookPage(getDriver()).getPage(AddressBookPage.class);
     }
 
     public PaymentOptionsPage navigateToPaymentOptions() {
-        getWebElement(By.id(PAYMENT_OPTION_ID)).click();
+        getWebElement(By.id(PAYMENT_OPTION_XPATH)).click();
         return new PaymentOptionsPage(getDriver()).getPage(PaymentOptionsPage.class);
     }
 
     public OrderHistoryPage navigateToOrderHistory() {
-        getWebElement(By.id(ORDER_HISTORY_ID)).click();
+        getWebElement(By.id(ORDER_HISTORY_XPATH)).click();
         return new OrderHistoryPage(getDriver()).getPage(OrderHistoryPage.class);
     }
 
     public MyReviewsPage navigateToMyReviews() {
-        getWebElement(By.id(MY_REVIEWS_ID)).click();
+        getWebElement(By.id(MY_REVIEWS_XPATH)).click();
         return new MyReviewsPage(getDriver()).getPage(MyReviewsPage.class);
     }
 
     public ShukranPage navigateToShukran() {
-        getWebElement(By.id(SHUKRAN_ID)).click();
+        getWebElement(By.id(SHUKRAN_XPATH)).click();
         return new ShukranPage(getDriver()).getPage(ShukranPage.class);
     }
 }

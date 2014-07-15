@@ -16,7 +16,7 @@ public class ShippingPage extends BasePage<ShippingPage> {
     private static final String REGION_DD_ID = "regions";
     private static final String PHONE_NUM_ID = "phone";
     private static final String CONTINUE_BTN_XPATH = ".//*[@id='createLMGAddressForm']/div[2]/input";
-    private static final String BACK_BTN_ID = "";
+    private static final String BACK_BTN_ID = ".//*[@id='createLMGAddressForm']/div[2]/a";
     private static final String SAME_BILLING_ADDR_CHECKBOX_ID = "sameBillingAsShipping";
 
     /**
