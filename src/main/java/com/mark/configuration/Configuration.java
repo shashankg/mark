@@ -1,8 +1,8 @@
 package com.mark.configuration;
 
 import com.mark.exception.MarkException;
-import com.shash.automationNG.utils.jsonUtil.ObjectMapperUtil;
-import com.shash.automationNG.utils.yamlUtil.YamlUtil;
+import com.shash.autoNG.utils.jsonUtil.ObjectMapperUtil;
+import com.shash.autoNG.utils.yamlUtil.YamlUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
