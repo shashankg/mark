@@ -7,6 +7,10 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AddressBookPage extends BasePage<AddressBookPage> {
+    private static final String EDIT_BUTTON_XPATH =  ".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[2]/div[1]/ul/li[1]/a";
+    private static final String DELETE_BUTTON_XPATH = ".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[2]/div[1]/ul/li[2]/a";
+    private static final String ADD_NEW_ADDRESS_BUTTON_CLASS = "btn-blue-s btn-addaddress";
+
 
     /**
      * Constructor
