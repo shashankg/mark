@@ -13,7 +13,7 @@ public class LoginPage extends BasePage<LoginPage> {
     private static final String EMAIL_ID = "email";
     private static final String FAKE_PASSWORD_ID = "fakelogin-password";
     private static final String PASSWORD_ID = "login-password";
-    private static final String LOGIN_BTN_ID = "";
+    private static final String LOGIN_BTN_XPATH = ".//*[@id='landmarkLoginForm']/fieldset/div[6]/input";
 
     private Header header;
     private Footer footer;
@@ -59,10 +59,11 @@ public class LoginPage extends BasePage<LoginPage> {
      * @param email
      * @param password
      */
-    public void login(String email, String password) {
+    public AccountPage login(String email, String password) {
         getWebElement(By.id(EMAIL_ID)).sendKeys(email);
         getWebElement(By.id(FAKE_PASSWORD_ID)).clear();
         getWebElement(By.id(PASSWORD_ID)).sendKeys(password);
-        getWebElement(By.id(LOGIN_BTN_ID)).submit();
+        getWebElement(By.xpath(LOGIN_BTN_XPATH)).click();
+        return new AccountPage(getDriver()).getPage(AccountPage.class);
     }
 }

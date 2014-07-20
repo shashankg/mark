@@ -36,7 +36,7 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
      * @return
      */
     public boolean isErrorDisplayed() {
-        return isElementPresent(By.id(ERROR_MESSAGE_XPATH));
+        return isElementPresent(By.xpath(ERROR_MESSAGE_XPATH));
     }
 
     /**
@@ -45,7 +45,8 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
      * @return
      */
     public String getErrorMessage() {
-        return getWebElement(By.id(ERROR_MESSAGE_XPATH)).getText();
+        System.out.println(getWebElement(By.xpath(ERROR_MESSAGE_XPATH)).getText());
+        return getWebElement(By.xpath(ERROR_MESSAGE_XPATH)).getText();
     }
 
     /**
@@ -56,5 +57,13 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
     public ProductPage clickOnFirstItem() {
         getWebElement(By.xpath(FIRST_ITEM_XPATH)).click();
         return new ProductPage(getDriver()).getPage(ProductPage.class);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isSearchResultDisplayed() {
+        return isElementPresent(By.xpath(FIRST_ITEM_XPATH));
     }
 }

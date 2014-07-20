@@ -19,8 +19,7 @@ public class SignupPage extends BasePage<SignupPage> {
     private static final String CONFIRM_PASSWORD_ID = "confirmPassword";
     private static final String GENDER_ID = "gender";
     private static final String SIGN_UP_XPATH = ".//*[@id='registerForm']/fieldset/div[8]/input";
-
-    private static final String ERROR_MESSAGE_ID = "loginValidationErrorSpan";
+    private static final String ERROR_MESSAGE_XPATH = ".//*[@id='registerForm']/div/span";
 
     private Header header;
     private Footer footer;
@@ -90,8 +89,10 @@ public class SignupPage extends BasePage<SignupPage> {
         return isElementPresentAndDisplay(By.id(FIRST_NAME_ID)) &&
                 isElementPresentAndDisplay(By.id(LAST_NAME_ID)) &&
                 isElementPresentAndDisplay(By.id(EMAIL_ID)) &&
-                isElementPresentAndDisplay(By.id(PASSWORD_ID)) &&
-                isElementPresentAndDisplay(By.id(CONFIRM_PASSWORD_ID)) &&
+                isElementPresentAndDisplay(By.id(FAKE_PASSWORD_ID)) &&
+                isElementPresent(By.id(PASSWORD_ID)) &&
+                isElementPresentAndDisplay(By.id(FAKE_CONFIRM_PASSWORD_ID))&&
+                isElementPresent(By.id(CONFIRM_PASSWORD_ID)) &&
                 isElementPresentAndDisplay(By.id(GENDER_ID)) &&
                 isElementPresentAndDisplay(By.xpath(SIGN_UP_XPATH));
     }
@@ -102,6 +103,6 @@ public class SignupPage extends BasePage<SignupPage> {
      * @return
      */
     public String getErrorMessage() {
-        return getWebElement(By.id(ERROR_MESSAGE_ID)).getText();
+        return getWebElement(By.xpath(ERROR_MESSAGE_XPATH)).getText();
     }
 }

@@ -12,7 +12,7 @@ public class SearchTest extends BaseTest {
     private static final String inValidSearchKeyword = "XXXXXXX";
     private static final String chineseKeyword = "字母";
     private static final String specialCharKeyword = "!@#$%^&*()";
-    private static final String productId = "";
+    private static final String productId = "154574273";
 
     @Test(groups = {"smoke"})
     public void test_search_bar_is_displayed() {
@@ -28,6 +28,7 @@ public class SearchTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         SearchResultPage resultPage = homePage.getSearchBar().search(validSearchKeyword);
 
+        Assert.assertTrue(resultPage.isSearchResultDisplayed());
         //FIXME: Assert items are mobile on result page
     }
 
@@ -36,24 +37,27 @@ public class SearchTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         SearchResultPage resultPage = homePage.getSearchBar().search(productId);
 
+        Assert.assertTrue(resultPage.isSearchResultDisplayed());
         //FIXME: Assert items are mobile on result page
     }
 
     @Test(groups = {"smoke"})
     public void test_search_with_empty_keyword() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        SearchResultPage resultPage = homePage.getSearchBar().search("");
+        SearchResultPage resultPage = homePage.getSearchBar().search(" ");
 
         Assert.assertFalse(resultPage.isErrorDisplayed());
+        Assert.assertFalse(resultPage.isSearchResultDisplayed());
     }
 
     @Test(groups = {"smoke"})
     public void test_search_with_non_existing_item() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        SearchResultPage resultPage = homePage.getSearchBar().search("");
+        SearchResultPage resultPage = homePage.getSearchBar().search(inValidSearchKeyword);
 
         Assert.assertTrue(resultPage.isErrorDisplayed());
-        Assert.assertEquals(resultPage.getErrorMessage(), "Sorry there are no matches for ‘" + inValidSearchKeyword + "’");
+        Assert.assertTrue(resultPage.getErrorMessage().contains("Sorry there are no matches for"));
+        Assert.assertFalse(resultPage.isSearchResultDisplayed());
     }
 
     @Test(groups = {"smoke"})
@@ -62,7 +66,8 @@ public class SearchTest extends BaseTest {
         SearchResultPage resultPage = homePage.getSearchBar().search(chineseKeyword);
 
         Assert.assertTrue(resultPage.isErrorDisplayed());
-        Assert.assertEquals(resultPage.getErrorMessage(), "Sorry there are no matches for ‘" + chineseKeyword + "’");
+        Assert.assertTrue(resultPage.getErrorMessage().contains("Sorry there are no matches for"));
+        Assert.assertFalse(resultPage.isSearchResultDisplayed());
     }
 
     @Test(groups = {"smoke"})
@@ -71,7 +76,8 @@ public class SearchTest extends BaseTest {
         SearchResultPage resultPage = homePage.getSearchBar().search(specialCharKeyword);
 
         Assert.assertTrue(resultPage.isErrorDisplayed());
-        Assert.assertEquals(resultPage.getErrorMessage(), "Sorry there are no matches for ‘" + specialCharKeyword + "’");
+        Assert.assertTrue(resultPage.getErrorMessage().contains("Sorry there are no matches for"));
+        Assert.assertFalse(resultPage.isSearchResultDisplayed());
     }
 }
 

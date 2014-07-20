@@ -16,19 +16,20 @@ public class Header extends BasePage<Header> {
     private static final String FAKE_PASSWORD_ID = "fakej_password";
     private static final String PASSWORD_ID = "j_password";
     private static final String LOGIN_BUTTON_ID = "login";
+    private static final String AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/a[1]/span";
 
     private static final String MY_ACCOUNT_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[1]";
     private static final String ORDER_HISTORY_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[2]";
     private static final String SHUKRAN_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[3]/a";
-    private static final String LOGOUT_LINK = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[4]/a";
+    private static final String LOGOUT_LINK_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[4]/a";
 
-    private static final String FORGOT_PASSWORD_LINK_ID = "";
-    private static final String LOGIN_VIA_FACEBOOK_ID = "";
+    private static final String FORGOT_PASSWORD_LINK_XPATH = ".//*[@id='loginForm']/fieldset/div[3]/a";
+    private static final String LOGIN_VIA_FACEBOOK_ID = "facebook-login";
 
     private static final String BASKET_CLASS = "basket btn-open";
     private static final String VIEW_BASKET_XPATH = ".//*[@id='wrap-basket-template']/div/table/tbody/tr[1]/td/a/span";
     private static final String BASKET_CHECKOUT_CLASS = "basket_checkout_button_class";
-    private static final String LOGIN_ERROR_MESSAGE_ID = "";
+    private static final String LOGIN_FLYOUT_ERROR_MESSAGE_ID = "loginValidationErrorSpan";
     private static final String BASKET_ITEM_COUNT_CLASS = "basket-count";
     private static final String BASKET_FIRST_ITEM_REMOVE_LINK_CLASS = "deleteRowButton";
 
@@ -47,7 +48,7 @@ public class Header extends BasePage<Header> {
     }
 
     public void login(String username, String password) {
-        clickAtLogin();
+        clickAtLoginBeforeLogin();
         logger.info("[Header Login] Trying to login with username: {}, password: {}", username, password);
         getWebElement(By.id(USERNAME_ID)).sendKeys(username);
         getWebElement(By.id(FAKE_PASSWORD_ID)).clear();
@@ -55,24 +56,28 @@ public class Header extends BasePage<Header> {
         getWebElement(By.id(LOGIN_BUTTON_ID)).click();
     }
 
-    private void clickAtLogin() {
+    private void clickAtLoginBeforeLogin() {
         getWebElement(By.xpath(LOGIN_FLYOUT_XPATH)).click();
     }
 
+    private void clickAtLoginAfterLogin() {
+        getWebElement(By.xpath(AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH)).click();
+    }
+
     public void clickAtForgotPassword() {
-        clickAtLogin();
-        getWebElement(By.xpath(FORGOT_PASSWORD_LINK_ID)).click();
+        clickAtLoginAfterLogin();
+        getWebElement(By.xpath(FORGOT_PASSWORD_LINK_XPATH)).click();
     }
 
     public SignupPage navigateToSignUp() {
-        clickAtLogin();
+        clickAtLoginBeforeLogin();
         getWebElement(By.xpath(SIGN_UP_LINK_XPATH)).click();
         return new SignupPage(getDriver()).getPage(SignupPage.class);
     }
 
     public boolean isLoggedIn() {
-        String loginText = getWebElement(By.id("")).getText().trim();
-        return !loginText.equalsIgnoreCase("Login");
+        String loginText = getWebElement(By.xpath(AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH)).getText().trim();
+        return loginText.contains("Hello,");
     }
 
     public boolean isLoggedInAs(String firstName, String lastName) {
@@ -84,7 +89,7 @@ public class Header extends BasePage<Header> {
         if (!isLoggedIn())
             throw new MarkException("[Header] User is not logged in.");
 
-        clickAtLogin();
+        clickAtLoginAfterLogin();
         getWebElement(By.id(MY_ACCOUNT_ID)).click();
         return new AccountPage(getDriver()).getPage(AccountPage.class);
     }
@@ -93,7 +98,7 @@ public class Header extends BasePage<Header> {
         if (!isLoggedIn())
             throw new MarkException("[Header] User is not logged in.");
 
-        clickAtLogin();
+        clickAtLoginAfterLogin();
         getWebElement(By.xpath(ORDER_HISTORY_ID)).click();
         return new OrderHistoryPage(getDriver()).getPage(OrderHistoryPage.class);
     }
@@ -102,7 +107,7 @@ public class Header extends BasePage<Header> {
         if (!isLoggedIn())
             throw new MarkException("[Header] User is not logged in.");
 
-        clickAtLogin();
+        clickAtLoginAfterLogin();
         getWebElement(By.xpath(SHUKRAN_ID)).click();
         return new ShukranPage(getDriver()).getPage(ShukranPage.class);
     }
@@ -115,15 +120,13 @@ public class Header extends BasePage<Header> {
 
     /**
      * Logout
-     *
-     * @return
      */
     public void logout() {
         if (!isLoggedIn())
             throw new MarkException("[Header] User is not logged in.");
 
-        clickAtLogin();
-        getWebElement(By.xpath(LOGOUT_LINK)).click();
+        clickAtLoginAfterLogin();
+        getWebElement(By.xpath(LOGOUT_LINK_XPATH)).click();
     }
 
     /**
@@ -132,7 +135,7 @@ public class Header extends BasePage<Header> {
      * @return
      */
     public String getLoginErrorMessage() {
-        return getWebElement(By.id(LOGIN_ERROR_MESSAGE_ID)).getText();
+        return getWebElement(By.id(LOGIN_FLYOUT_ERROR_MESSAGE_ID)).getText();
     }
 
     /**
@@ -150,9 +153,9 @@ public class Header extends BasePage<Header> {
      * @return
      */
     public boolean isSignUpLinkInLoginFlyoutVisible() {
-        clickAtLogin();
+        clickAtLoginBeforeLogin();
         boolean isDisplayed = isElementPresentAndDisplay(By.xpath(SIGN_UP_LINK_XPATH));
-        clickAtLogin();
+        clickAtLoginBeforeLogin();
         return isDisplayed;
     }
 
@@ -162,12 +165,13 @@ public class Header extends BasePage<Header> {
      * @return
      */
     public boolean isLoginParamsVisibleInLoginFlyout() {
-        clickAtLogin();
+        clickAtLoginBeforeLogin();
         boolean isDisplayed = isElementPresentAndDisplay(By.id(USERNAME_ID)) &&
-                isElementPresentAndDisplay(By.id(PASSWORD_ID)) &&
+                isElementPresentAndDisplay(By.id(FAKE_PASSWORD_ID)) &&
+                isElementPresent(By.id(PASSWORD_ID)) &&
                 isElementPresentAndDisplay(By.id(LOGIN_BUTTON_ID)) &&
-                isElementPresentAndDisplay(By.id(FORGOT_PASSWORD_LINK_ID));
-        clickAtLogin();
+                isElementPresentAndDisplay(By.xpath(FORGOT_PASSWORD_LINK_XPATH));
+        clickAtLoginBeforeLogin();
         return isDisplayed;
     }
 
@@ -177,9 +181,9 @@ public class Header extends BasePage<Header> {
      * @return
      */
     public boolean isLoginViaFBVisibleInLoginFlyout() {
-        clickAtLogin();
-        boolean isDisplayed = isElementPresentAndDisplay(By.xpath(LOGIN_VIA_FACEBOOK_ID));
-        clickAtLogin();
+        clickAtLoginBeforeLogin();
+        boolean isDisplayed = isElementPresentAndDisplay(By.id(LOGIN_VIA_FACEBOOK_ID));
+        clickAtLoginBeforeLogin();
         return isDisplayed;
     }
 
