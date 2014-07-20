@@ -19,12 +19,6 @@ public class ShoppingBasketPage extends BasePage<ShoppingBasketPage> {
         super(driver);
     }
 
-//    public removeEmptiesCart()
-//    {
-//        getWebElement(By.xpath("REMOVE_ITEM_XPATH")).click();
-//
-//    }
-
 
     @Override
     protected ExpectedCondition getPageLoadCondition() {
