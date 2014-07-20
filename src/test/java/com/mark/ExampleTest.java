@@ -187,7 +187,7 @@ public class ExampleTest {
 //        Assert.assertEquals(driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[2]/div[1]/h4")).getText(),"TEST");
         //saving the edited text
 //        driver.findElement(By.xpath(".//*[@id='LMGAddressForm8812267864087_']/div[2]/div[10]/input")).click();
-//        driver.manage().timeouts().implicitlyWaits(3000, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWaits0(3000, TimeUnit.SECONDS);
         //Assert.assertEquals(driver.findElement(By.id("nickname8812267864087_")).getText(),driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[2]/div[1]/h4")).getText());
         //delete the address
 //        driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[2]/div[1]/ul/li[2]/a")).click();
@@ -196,38 +196,39 @@ public class ExampleTest {
 //        driver.findElement(By.xpath(".//*[@id='removeAddressForm']/div/a")).click();
 
         //adding new address
-        driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/a")).click();
-        driver.findElement(By.id("addressNickName")).sendKeys("test3");
-        driver.findElement(By.id("firstName")).sendKeys("test3");
-        driver.findElement(By.id("lastName")).sendKeys("test3");
-        driver.findElement(By.id("line1")).sendKeys("test3");
-        driver.findElement(By.id("line2")).sendKeys("test3");
-        WebElement country=driver.findElement(By.id("countryIsoDrop"));
-        List<WebElement> ddcountry=country.findElements(By.tagName("option"));
-        for(WebElement value:ddcountry){
-            if(value.getText().equalsIgnoreCase("Ukraine")){
-                value.click();
-            }   }
-        Thread.sleep(3000);
-        WebElement state=driver.findElement(By.id("regions"));
-        List<WebElement> ddstate=state.findElements(By.tagName("option"));
-        for(WebElement value:ddstate){
-            if(value.getText().equalsIgnoreCase("Lviv oblast")){
-                value.click();
-            }   }
-        driver.findElement(By.id("phone")).sendKeys("123456789");
-        driver.findElement(By.id("save-address")).click();
-       System.out.print("New Address is added");
+//        driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/a")).click();
+//        driver.findElement(By.id("addressNickName")).sendKeys("test3");
+//        driver.findElement(By.id("firstName")).sendKeys("test3");
+//        driver.findElement(By.id("lastName")).sendKeys("test3");
+//        driver.findElement(By.id("line1")).sendKeys("test3");
+//        driver.findElement(By.id("line2")).sendKeys("test3");
+//        WebElement country=driver.findElement(By.id("countryIsoDrop"));
+//        List<WebElement> ddcountry=country.findElements(By.tagName("option"));
+//        for(WebElement value:ddcountry){
+//            if(value.getText().equalsIgnoreCase("Ukraine")){
+//                value.click();
+//            }   }
+//        Thread.sleep(3000);
+//        WebElement state=driver.findElement(By.id("regions"));
+//        List<WebElement> ddstate=state.findElements(By.tagName("option"));
+//        for(WebElement value:ddstate){
+//            if(value.getText().equalsIgnoreCase("Lviv oblast")){
+//                value.click();
+//            }   }
+//        driver.findElement(By.id("phone")).sendKeys("123456789");
+//        driver.findElement(By.id("save-address")).click();
+//       System.out.print("New Address is added");
 
         //deleted the saved address
-        driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[3]/div[1]/ul/li[2]/a")).click();
+  //      driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[3]/div[1]/ul/li[2]/a")).click();
 
 
         //editing the saved address
-        driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[3]/div[1]/ul/li[1]/a")).click();
-        driver.findElement(By.xpath(".//*[@id='nickname8812421349399']")).clear();
-        driver.findElement(By.id("nickname8812421349399")).sendKeys("test4");
-        driver.findElement(By.xpath(".//*[@id='LMGAddressForm8812421349399']/div[2]/div[10]/input")).click();
+//        driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[3]/div[1]/ul/li[1]/a")).click();
+//        Thread.sleep(3000);
+//        driver.findElement(By.id("nickname8812421349399")).clear();
+//        driver.findElement(By.id("nickname8812421349399")).sendKeys("test4");
+//        driver.findElement(By.xpath(".//*[@id='LMGAddressForm8812421349399']/div[2]/div[10]/input")).click();
     }
 }
 

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SearchResultPage extends BasePage<SearchResultPage> {
-    private static final String ERROR_MESSAGE_ID = "";
+    private static final String ERROR_MESSAGE_XPATH = ".//*[@id='main']/div/div[2]/h3";
     private static final String FIRST_ITEM_XPATH = ".//*[@id='main']/div/div[2]/fieldset/div[1]/div[2]/div[1]/div[2]/h4/a";
 
     /**
@@ -36,7 +36,7 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
      * @return
      */
     public boolean isErrorDisplayed() {
-        return isElementPresent(By.id(ERROR_MESSAGE_ID));
+        return isElementPresent(By.id(ERROR_MESSAGE_XPATH));
     }
 
     /**
@@ -45,7 +45,7 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
      * @return
      */
     public String getErrorMessage() {
-        return getWebElement(By.id(ERROR_MESSAGE_ID)).getText();
+        return getWebElement(By.id(ERROR_MESSAGE_XPATH)).getText();
     }
 
     /**
