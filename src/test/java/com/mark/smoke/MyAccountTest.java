@@ -17,6 +17,7 @@ public class MyAccountTest extends BaseTest {
     public void test_saving_a_new_address_in_address_book() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         homePage.getHeader().login(username, password);
+        sleep("Login Completion");
         AccountPage accountPage = homePage.getHeader().navigateToMyAccount();
         AddressBookPage addressBookPage = accountPage.navigateToAddressBook().
                 saveAddress(randomString, randomString, randomString, randomString,
@@ -28,6 +29,7 @@ public class MyAccountTest extends BaseTest {
     public void test_creation_of_shukran_account(){
         HomePage homePage= new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         homePage.getHeader().login(username,password);
+        sleep("Login Completion");
         AccountPage accountPage = homePage.getHeader().navigateToMyAccount();
         ShukranPage shukranPage = accountPage.navigateToShukran();
         shukranPage.createShukranAccount("","","","","","","");
@@ -39,6 +41,7 @@ public class MyAccountTest extends BaseTest {
         public void test_unlinking_of_shukran_account(){
             HomePage homePage= new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
             homePage.getHeader().login(username,password);
+            sleep("Login Completion");
             AccountPage accountPage = homePage.getHeader().navigateToMyAccount();
             ShukranPage shukranPage = accountPage.navigateToShukran();
             shukranPage.createShukranAccount("","","","","","","");
@@ -50,6 +53,7 @@ public class MyAccountTest extends BaseTest {
     public void test_saving_card(){
         HomePage homePage= new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         homePage.getHeader().login(username,password);
+        sleep("Login Completion");
         AccountPage accountPage = homePage.getHeader().navigateToMyAccount();
         PaymentOptionsPage paymentOptionsPage = accountPage.navigateToPaymentOptions();
         paymentOptionsPage.saveCardDetails("5555555555554444","test","08","2015","111",true,"test","test","test","test","test","test","test","test");

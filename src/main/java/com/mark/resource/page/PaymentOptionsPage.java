@@ -26,7 +26,7 @@ public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
     private static final String CITY_ID = "regions";
     private static final String PHONE_ID = "phone";
     private static final String SAVE_BUTTON_XPATH = ".//*[@id='creditCardForm']/div[9]/input";
-    
+
 
     /**
      * Constructor
@@ -74,5 +74,13 @@ public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
         return isElementPresentAndDisplay(By.id(NICKNAME_ID));
     }
 
+    public  void makeSaveCardAsDefault()
+    {
 
+    }
+
+    public void deleteSavedCard()
+    {
+
+    }
 }

@@ -265,13 +265,13 @@ public class ExampleTest {
 //        driver.findElement(By.id("save-changes")).click();
 
 
-         driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[4]/a")).click();
+         driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[7]/a")).click();
 
-            driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div/div/a")).click();
-         //cancel_button_xpath = .//*[@id='creditCardForm']/div[9]/a
-            driver.findElement(By.id("ccf-number")).sendKeys("5555555555554444");
-            driver.findElement(By.id("ccf-name")).sendKeys("test");
-            driver.findElement(By.id("")).sendKeys();
+//            driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div/div/a")).click();
+//         //cancel_button_xpath = .//*[@id='creditCardForm']/div[9]/a
+//            driver.findElement(By.id("ccf-number")).sendKeys("5555555555554444");
+//            driver.findElement(By.id("ccf-name")).sendKeys("test");
+//            driver.findElement(By.id("")).sendKeys();
 
         }
 
