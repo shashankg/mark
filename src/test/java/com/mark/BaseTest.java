@@ -76,7 +76,7 @@ public class BaseTest {
     protected AccountPage signupAndGetAccountPage() {
         String email = System.currentTimeMillis() + "@email.com";
         SignupPage signupPage = new SignupPage(getDriver()).openPage(SignupPage.class, BASE_URL);
-        return signupPage.signUp(randomString, randomString, email, randomString, randomString, "male");
+        return signupPage.signUp(randomString, randomString, email, password, password, "male");
     }
 
 

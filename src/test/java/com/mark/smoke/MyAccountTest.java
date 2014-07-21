@@ -21,6 +21,7 @@ public class MyAccountTest extends BaseTest {
         //Assert that address is saved
     }
 
+    @Test(groups = {"smoke"})
     public void test_creation_of_shukran_account() {
         AccountPage accountPage = signupAndGetAccountPage();
         CreateShukranPage createShukranPage = accountPage.navigateToShukran().navigateToCreateShukranPage();
