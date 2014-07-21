@@ -24,9 +24,9 @@ public class ExampleTest {
         driver.get(baseURL);
         driver.findElement(By.xpath(".//*[@id='header']/div[1]/div/div/ul/li[1]/a[2]")).click();
 
-        driver.findElement(By.id("j_username")).sendKeys("test123@test.com");
+        driver.findElement(By.id("j_username")).sendKeys("test12345@test.com");
         driver.findElement(By.id("fakej_password")).clear();
-        driver.findElement(By.id("j_password")).sendKeys("test@123");
+        driver.findElement(By.id("j_password")).sendKeys("test@12345");
         driver.findElement(By.id("login")).click();
 
         //driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
@@ -177,7 +177,7 @@ public class ExampleTest {
 //        driver.findElement(By.id("login")).click();
         //driver.findElement(By.xpath(".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[1]/a")).click();
         //edit the address
-        driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[3]/a")).click();
+      // // driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[3]/a")).click();
 //        driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div[1]/div[2]/div[1]/ul/li[1]/a")).click();
 //        driver.findElement(By.id("nickname8812267864087_")).clear();
 //        driver.findElement(By.id("nickname8812267864087_")).sendKeys("NewTest");
@@ -229,8 +229,61 @@ public class ExampleTest {
 //        driver.findElement(By.id("nickname8812421349399")).clear();
 //        driver.findElement(By.id("nickname8812421349399")).sendKeys("test4");
 //        driver.findElement(By.xpath(".//*[@id='LMGAddressForm8812421349399']/div[2]/div[10]/input")).click();
+
+
+        //Shukran
+  //      driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[7]/a")).click();
+ //       driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div[1]/div[2]/div/div[1]/div/div/div/div/a")).click();
+//        driver.findElement(By.xpath(".//*[@id='create-shukran-account-form']/fieldset[1]/div[1]/img")).click();
+//        driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/table/tbody/tr[4]/td[4]/a")).click();
+//
+//        WebElement nationality=driver.findElement(By.id("nationality"));
+//        List<WebElement> ddnationality=nationality.findElements(By.tagName("option"));
+//        for(WebElement value:ddnationality){
+//            if(value.getText().equalsIgnoreCase("Aruba")){
+//                value.click();
+//            }   }
+//
+//        WebElement country=driver.findElement(By.id("country"));
+//        List<WebElement> ddcountry=country.findElements(By.tagName("option"));
+//        for(WebElement value:ddcountry){
+//            if(value.getText().equalsIgnoreCase("UAE")){
+//                value.click();
+//            }   }
+//        WebElement city=driver.findElement(By.id("city"));
+//        List<WebElement> ddcity=city.findElements(By.tagName("option"));
+//        for(WebElement value:ddcity){
+//            if(value.getText().equalsIgnoreCase("Ajman")){
+//                value.click();
+//            }   }
+//        driver.findElement(By.id("address1")).clear();
+//        driver.findElement(By.id("address1")).sendKeys("test5");
+//        driver.findElement(By.id("address2")).clear();
+//        driver.findElement(By.id("address2")).sendKeys("test5");
+//        driver.findElement(By.id("poBox")).sendKeys("123456");
+//        driver.findElement(By.id("mobileNumber")).sendKeys("123456789");
+//        driver.findElement(By.id("save-changes")).click();
+
+
+         driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[4]/a")).click();
+
+            driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div/div/a")).click();
+         //cancel_button_xpath = .//*[@id='creditCardForm']/div[9]/a
+            driver.findElement(By.id("ccf-number")).sendKeys("5555555555554444");
+            driver.findElement(By.id("ccf-name")).sendKeys("test");
+            driver.findElement(By.id("")).sendKeys();
+
+        }
+
+
+
+
+
+
+
+
     }
-}
+
 
 
 
