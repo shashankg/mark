@@ -29,14 +29,14 @@ public class Configuration {
         try {
             Map yamlMap = YamlUtil.read(new File(CONFIG_FILE));
             String targetEnv = System.getenv(ENV_VARIABLE);
-            logger.info("[Config] Target ENV: {}", targetEnv);
+            logger.info("[Configuration] Target ENV: {}", targetEnv);
 
             if (targetEnv != null && yamlMap.containsKey(targetEnv)) {
-                logger.info("[Config] Loading configurations for [{}]", targetEnv);
+                logger.info("[Configuration] Loading configurations for [{}]", targetEnv);
                 configMap = (Map<String, Object>) yamlMap.get(targetEnv.trim().toLowerCase());
             } else {
-                logger.info("[Config] Target Env is null/no config available for it, hence loading default config [localhost]");
-                logger.info("[Config] If you with to use other environment, please " +
+                logger.info("[Configuration] Target Env is null/no config available for it, hence loading default config [localhost]");
+                logger.info("[Configuration] If you with to use other environment, please " +
                         "'export {}=$ENV_NAME' and run the tests again", ENV_VARIABLE);
                 configMap = (Map<String, Object>) yamlMap.get("localhost");
             }
@@ -45,7 +45,7 @@ public class Configuration {
             testConfig = (Map<String, Object>) configMap.get("testConfig");
 
         } catch (Exception e) {
-            throw new MarkException("[Config] Error while loading configurations: " + e.getMessage());
+            throw new MarkException("[Configuration] Error while loading configurations: " + e.getMessage());
         }
 
         baseUrl = (String) webConfig.get("baseUrl");
@@ -84,9 +84,9 @@ public class Configuration {
      */
     private static void printConfig() {
         try {
-            logger.info("[Config] Test Config Used: {}", ObjectMapperUtil.instance().writeValueAsString(configMap));
+            logger.info("[Configuration] Test Configuration Used: {}", ObjectMapperUtil.instance().writeValueAsString(configMap));
         } catch (IOException e) {
-            logger.error("[Config] Error while parsing config");
+            logger.error("[Configuration] Error while parsing config");
         }
     }
 }

@@ -17,16 +17,15 @@ public class LoginTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         Header header = homePage.getHeader();
         sleep("Login Completion");
-
         LoginAssertion.assertVisibilityOfLoginFlyoutElements(header);
     }
+
 
     @Test(groups = {"smoke"}, dependsOnMethods = {"test_visibility_of_login_flyout_and_its_element"})
     public void test_login_from_login_flyout() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         homePage.getHeader().login(username, password);
         sleep("Login Completion");
-
         LoginAssertion.assertSuccessfulLogin(homePage.getHeader());
     }
 
@@ -37,7 +36,6 @@ public class LoginTest extends BaseTest {
         header.login(username, password);
         sleep("Login Completion");
         header.logout();
-
         LoginAssertion.assertSuccessfulLogout(header);
     }
 
@@ -46,16 +44,15 @@ public class LoginTest extends BaseTest {
     public void test_login_from_standalone_login_page() {
         LoginPage loginPage = new LoginPage(getDriver()).openPage(LoginPage.class, BASE_URL);
         Header header = loginPage.login(username, password).getHeader();
-
         LoginAssertion.assertSuccessfulLogin(header);
     }
+
 
     @Test(groups = {"smoke"}, dependsOnMethods = {"test_login_from_login_flyout"})
     public void test_login_flyout_with_wrong_user_name() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         homePage.getHeader().login("wrong.user@email.com", password);
         sleep("Login Completion");
-
         LoginAssertion.assertForUnsuccessfulLogin(homePage.getHeader());
     }
 
@@ -65,16 +62,15 @@ public class LoginTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         homePage.getHeader().login("wrong.user@email.com", password);
         sleep("Login Completion");
-
         LoginAssertion.assertForUnsuccessfulLogin(homePage.getHeader());
     }
+
 
     @Test(groups = {"smoke"}, dependsOnMethods = {"test_login_from_login_flyout"})
     public void test_login_flyout_with_empty_credentials() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
         homePage.getHeader().login(" ", " ");
         sleep("Login Completion");
-
         LoginAssertion.assertForUnsuccessfulLogin(homePage.getHeader());
     }
 }

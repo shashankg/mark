@@ -25,7 +25,7 @@ public class WebDriverFactory {
      */
     public static WebDriver prepareWebDriver() {
         DriverType browserType = DriverType.valueOf(Configuration.getDriverType().trim().toUpperCase());
-        logger.info("Preparing WebDriver with browserType {}", browserType);
+        logger.info("[WebDriver Factory] Preparing WebDriver with browserType {}", browserType);
 
         switch (browserType) {
             case FIREFOX:
