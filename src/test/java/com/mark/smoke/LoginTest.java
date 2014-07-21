@@ -8,9 +8,6 @@ import com.mark.resource.page.LoginPage;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-    private static final String username = "test123@test.com";
-    private static final String password = "test@123";
-
 
     @Test(groups = {"smoke"})
     public void test_visibility_of_login_flyout_and_its_element() {

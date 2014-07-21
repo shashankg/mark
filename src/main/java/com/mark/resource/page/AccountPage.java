@@ -81,8 +81,8 @@ public class AccountPage extends BasePage<AccountPage> {
         return new MyReviewsPage(getDriver()).getPage(MyReviewsPage.class);
     }
 
-    public ShukranPage navigateToShukran() {
+    public ShukranHomePage navigateToShukran() {
         getWebElement(By.xpath(SHUKRAN_XPATH)).click();
-        return new ShukranPage(getDriver()).getPage(ShukranPage.class);
+        return new ShukranHomePage(getDriver()).getPage(ShukranHomePage.class);
     }
 }
