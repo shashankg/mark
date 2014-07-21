@@ -18,7 +18,7 @@ public class Header extends BasePage<Header> {
     private static final String LOGIN_BUTTON_ID = "login";
     private static final String AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/a[1]/span";
 
-    private static final String MY_ACCOUNT_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[1]";
+    private static final String MY_ACCOUNT_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[1]/a";
     private static final String ORDER_HISTORY_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[2]";
     private static final String SHUKRAN_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[3]/a";
     private static final String LOGOUT_LINK_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[4]/a";
@@ -90,7 +90,7 @@ public class Header extends BasePage<Header> {
             throw new MarkException("[Header] User is not logged in.");
 
         clickAtLoginAfterLogin();
-        getWebElement(By.id(MY_ACCOUNT_ID)).click();
+        getWebElement(By.xpath(MY_ACCOUNT_XPATH)).click();
         return new AccountPage(getDriver()).getPage(AccountPage.class);
     }
 
@@ -103,13 +103,13 @@ public class Header extends BasePage<Header> {
         return new OrderHistoryPage(getDriver()).getPage(OrderHistoryPage.class);
     }
 
-    public ShukranPage navaigateToShukran() {
+    public ShukranHomePage navaigateToShukran() {
         if (!isLoggedIn())
             throw new MarkException("[Header] User is not logged in.");
 
         clickAtLoginAfterLogin();
         getWebElement(By.xpath(SHUKRAN_ID)).click();
-        return new ShukranPage(getDriver()).getPage(ShukranPage.class);
+        return new ShukranHomePage(getDriver()).getPage(ShukranHomePage.class);
     }
 
     public ShoppingBasketPage navigateToBasketPage() {
