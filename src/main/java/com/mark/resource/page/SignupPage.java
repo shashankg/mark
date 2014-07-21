@@ -91,7 +91,7 @@ public class SignupPage extends BasePage<SignupPage> {
                 isElementPresentAndDisplay(By.id(EMAIL_ID)) &&
                 isElementPresentAndDisplay(By.id(FAKE_PASSWORD_ID)) &&
                 isElementPresent(By.id(PASSWORD_ID)) &&
-                isElementPresentAndDisplay(By.id(FAKE_CONFIRM_PASSWORD_ID))&&
+                isElementPresentAndDisplay(By.id(FAKE_CONFIRM_PASSWORD_ID)) &&
                 isElementPresent(By.id(CONFIRM_PASSWORD_ID)) &&
                 isElementPresentAndDisplay(By.id(GENDER_ID)) &&
                 isElementPresentAndDisplay(By.xpath(SIGN_UP_XPATH));

@@ -10,7 +10,7 @@ import sun.dc.pr.PRError;
 
 public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
 
-    private static final String PAYMENT_OPTION_LINK_XPATH= ".//*[@id='main']/div/div/div[3]/div/ul/li[4]/a";
+    private static final String PAYMENT_OPTION_LINK_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[4]/a";
     private static final String CARD_NUMBER_ID = "ccf-number";
     private static final String CARD_HOLDER_NAME_ID = "ccf-name";
     private static final String EXPIRY_MONTH_ID = "ccf-exp-month";
@@ -25,11 +25,8 @@ public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
     private static final String COUNTRY_ID = "countryIsoDrop";
     private static final String CITY_ID = "regions";
     private static final String PHONE_ID = "phone";
-    private static final String SAVE_BUTTON_XPATH=".//*[@id='creditCardForm']/div[9]/input";
-    private static final String CARD_SAVED_MESSAGE_XPATH=".//*[@id='main']/div/fieldset/div/div[2]/div/div[2]/div[2]/address[1]/strong";
-
-
-
+    private static final String SAVE_BUTTON_XPATH = ".//*[@id='creditCardForm']/div[9]/input";
+    
 
     /**
      * Constructor
@@ -50,10 +47,9 @@ public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
         return "/my-account/payment-details";
     }
 
-    public void saveCardDetails(String cardNumber,String cardHolderName,String expiryMonth,String expiryYear,String cvv,
-                                  Boolean isSaveAsDefault, String nickName,String firstName,String lastName,String addressLine1,
-                                    String addressLine2,String country,String city,String phone )
-    {
+    public void saveCardDetails(String cardNumber, String cardHolderName, String expiryMonth, String expiryYear, String cvv,
+                                Boolean isSaveAsDefault, String nickName, String firstName, String lastName, String addressLine1,
+                                String addressLine2, String country, String city, String phone) {
         getWebElement(By.xpath(PAYMENT_OPTION_LINK_XPATH)).click();
         getWebElement(By.id(CARD_NUMBER_ID)).sendKeys(cardNumber);
         getWebElement(By.id(CARD_HOLDER_NAME_ID)).sendKeys(cardHolderName);
@@ -70,7 +66,13 @@ public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
         getWebElement(By.id(CITY_ID)).sendKeys(city);
         getWebElement(By.id(PHONE_ID)).sendKeys(phone);
         getWebElement(By.id(SAVE_BUTTON_XPATH)).click();
-        Assert.assertEquals(getWebElement(By.xpath(CARD_SAVED_MESSAGE_XPATH)).getText(),nickName);
+
 
     }
+
+    public boolean isNickNameDisplayed() {
+        return isElementPresentAndDisplay(By.id(NICKNAME_ID));
+    }
+
+
 }

@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-
-
 public class ShukranPage extends BasePage<ShukranPage> {
 
 
@@ -28,7 +26,8 @@ public class ShukranPage extends BasePage<ShukranPage> {
     private static final String SUCCESSFUL_SHUKRAN_ACCOUNT_MESSAGE_XPATH = ".//*[@id='main']/div/fieldset/div[1]/div[2]/div/div[1]/div/div/span[1]";
     private static final String UNLINK_SHUKRAN_ACCOUNT_XPATH = ".//*[@id='main']/div/fieldset/div[1]/div[2]/div/div[2]/div[3]";
     private static final String UNLINK_MESSAGE_XPATH = ".//*[@id='popup-shukran-unlink']/div/div/h3";
-    private static final String CLOSE_UNLINK_WINDOW_XPATH=".//*[@id='popup-shukran-unlink']/a";
+    private static final String CLOSE_UNLINK_WINDOW_XPATH = ".//*[@id='popup-shukran-unlink']/a";
+
     /**
      * Constructor
      *
@@ -50,6 +49,7 @@ public class ShukranPage extends BasePage<ShukranPage> {
 
     /**
      * Create a Shukran Account
+     *
      * @param nationality
      * @param state
      * @param city
@@ -58,36 +58,57 @@ public class ShukranPage extends BasePage<ShukranPage> {
      * @param poBoxNumber
      * @param mobile
      */
-    public void createShukranAccount(String nationality,String state,String city,String addressLine1, String addressLine2,String poBoxNumber,String mobile)
+    public void createShukranAccount(String nationality, String state, String city, String addressLine1, String addressLine2, String poBoxNumber, String mobile)
 
     {
-     getWebElement(By.xpath(SHUKRAN_LINK_XATH)).click();
-     getWebElement(By.xpath(CREATE_SHUKRAN_ACCOUNT_BUTTON_XATH)).click();
-     getWebElement(By.xpath(DOB_TEXTBOX_XATH)).click();
-     getWebElement(By.xpath(CALENDAR_DATE_XATH)).click();
-     selectFromDropDown(By.xpath(NATIONALITY_DROPDOWN_ID), nationality);
-     selectFromDropDown(By.xpath(COUNTRY_DROPDOWN_ID), state);
-     selectFromDropDown(By.xpath(CITY_DROPDOWN_ID), city);
-     getWebElement(By.id(ADDRESS_LINE1_ID)).clear();
-     getWebElement(By.id(ADDRESS_LINE1_ID)).sendKeys(addressLine1);
-     getWebElement(By.id(ADDRESS_LINE2_ID)).clear();
-     getWebElement(By.id(ADDRESS_LINE2_ID)).sendKeys(addressLine2);
-     getWebElement(By.id(POBOX_ID)).sendKeys(poBoxNumber);
-     getWebElement(By.id(MOBILE_ID)).sendKeys(mobile);
-     getWebElement(By.id(SUBMIT_CHANGES_ID)).click();
-     Assert.assertEquals(getWebElement(By.xpath(SUCCESSFUL_SHUKRAN_ACCOUNT_MESSAGE_XPATH)).getText(),"Congrats, your card is linked!");
+        getWebElement(By.xpath(SHUKRAN_LINK_XATH)).click();
+        getWebElement(By.xpath(CREATE_SHUKRAN_ACCOUNT_BUTTON_XATH)).click();
+        getWebElement(By.xpath(DOB_TEXTBOX_XATH)).click();
+        getWebElement(By.xpath(CALENDAR_DATE_XATH)).click();
+        selectFromDropDown(By.xpath(NATIONALITY_DROPDOWN_ID), nationality);
+        selectFromDropDown(By.xpath(COUNTRY_DROPDOWN_ID), state);
+        selectFromDropDown(By.xpath(CITY_DROPDOWN_ID), city);
+        getWebElement(By.id(ADDRESS_LINE1_ID)).clear();
+        getWebElement(By.id(ADDRESS_LINE1_ID)).sendKeys(addressLine1);
+        getWebElement(By.id(ADDRESS_LINE2_ID)).clear();
+        getWebElement(By.id(ADDRESS_LINE2_ID)).sendKeys(addressLine2);
+        getWebElement(By.id(POBOX_ID)).sendKeys(poBoxNumber);
+        getWebElement(By.id(MOBILE_ID)).sendKeys(mobile);
+        getWebElement(By.id(SUBMIT_CHANGES_ID)).click();
+
     }
 
     /**
      * Unlink Shukran account
      */
 
-    public void unlinkShukranAccount()
-    {
+    public void unlinkShukranAccount(String nationality, String state, String city, String addressLine1, String addressLine2, String poBoxNumber, String mobile) {
+        getWebElement(By.xpath(SHUKRAN_LINK_XATH)).click();
+        getWebElement(By.xpath(CREATE_SHUKRAN_ACCOUNT_BUTTON_XATH)).click();
+        getWebElement(By.xpath(DOB_TEXTBOX_XATH)).click();
+        getWebElement(By.xpath(CALENDAR_DATE_XATH)).click();
+        selectFromDropDown(By.xpath(NATIONALITY_DROPDOWN_ID), nationality);
+        selectFromDropDown(By.xpath(COUNTRY_DROPDOWN_ID), state);
+        selectFromDropDown(By.xpath(CITY_DROPDOWN_ID), city);
+        getWebElement(By.id(ADDRESS_LINE1_ID)).clear();
+        getWebElement(By.id(ADDRESS_LINE1_ID)).sendKeys(addressLine1);
+        getWebElement(By.id(ADDRESS_LINE2_ID)).clear();
+        getWebElement(By.id(ADDRESS_LINE2_ID)).sendKeys(addressLine2);
+        getWebElement(By.id(POBOX_ID)).sendKeys(poBoxNumber);
+        getWebElement(By.id(MOBILE_ID)).sendKeys(mobile);
+        getWebElement(By.id(SUBMIT_CHANGES_ID)).click();
         getWebElement(By.xpath(UNLINK_SHUKRAN_ACCOUNT_XPATH)).click();
-        Assert.assertEquals(getWebElement(By.xpath(UNLINK_MESSAGE_XPATH)),"Unlink your card");
         getWebElement(By.xpath(CLOSE_UNLINK_WINDOW_XPATH)).click();
 
     }
+
+    public String getUnlinkShukranMessage() {
+        return getWebElement(By.xpath(UNLINK_MESSAGE_XPATH)).getText();
+    }
+
+    public String getSuccessfulShukranAccountMessageXpathMessage() {
+        return getWebElement(By.xpath(SUCCESSFUL_SHUKRAN_ACCOUNT_MESSAGE_XPATH)).getText();
+    }
+
 
 }
