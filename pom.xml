@@ -11,6 +11,12 @@
     <dependencies>
 
         <dependency>
+            <artifactId>connector</artifactId>
+            <groupId>com.shash.autoNG</groupId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
             <artifactId>core</artifactId>
             <groupId>com.shash.autoNG</groupId>
             <version>0.0.1</version>

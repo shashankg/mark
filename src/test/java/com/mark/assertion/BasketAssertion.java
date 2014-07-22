@@ -1,4 +1,4 @@
 package com.mark.assertion;
 
-public class BasketAssertion {
+public class BasketAssertion extends BaseAssertion {
 }

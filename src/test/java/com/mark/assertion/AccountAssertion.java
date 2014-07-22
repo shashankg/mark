@@ -1,4 +1,4 @@
 package com.mark.assertion;
 
-public class AccountAssertion {
+public class AccountAssertion extends BaseAssertion{
 }

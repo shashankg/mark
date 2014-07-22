@@ -1,10 +1,9 @@
 package com.mark.configuration;
 
 import com.mark.exception.MarkException;
+import com.shash.autoNG.core.logger.LoggerNG;
 import com.shash.autoNG.utils.jsonUtil.ObjectMapperUtil;
 import com.shash.autoNG.utils.yamlUtil.YamlUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +11,7 @@ import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public class Configuration {
-    private static final Logger logger = LoggerFactory.getLogger(Configuration.class);
+    private static final LoggerNG logger = new LoggerNG();
     private static final String CONFIG_FILE = "./config/mark-config.yaml";
     private static final String ENV_VARIABLE = "TARGET_ENV";
 

@@ -1,4 +1,4 @@
 package com.mark.assertion;
 
-public class SearchAssertion {
+public class SearchAssertion extends BaseAssertion{
 }

@@ -64,9 +64,10 @@ public class Header extends BasePage<Header> {
         getWebElement(By.xpath(AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH)).click();
     }
 
-    public void clickAtForgotPassword() {
+    public ForgotPasswordPopUp clickAtForgotPassword() {
         clickAtLoginAfterLogin();
         getWebElement(By.xpath(FORGOT_PASSWORD_LINK_XPATH)).click();
+        return new ForgotPasswordPopUp(getDriver()).getPage(ForgotPasswordPopUp.class);
     }
 
     public SignupPage navigateToSignUp() {
@@ -219,8 +220,7 @@ public class Header extends BasePage<Header> {
      */
     public void removeFirstItemFromBasket() {
         getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).click();
-        sleep("Waiting for basket to appear");
+        sleep("Waiting for Dropdown to apprea");
         getWebElement(By.className(BASKET_FIRST_ITEM_REMOVE_LINK_CLASS)).click();
-        sleep("Waiting for removal of item from basket");
     }
 }

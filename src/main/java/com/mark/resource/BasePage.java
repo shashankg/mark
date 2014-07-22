@@ -1,6 +1,7 @@
 package com.mark.resource;
 
 import com.mark.configuration.Configuration;
+import com.shash.autoNG.core.logger.LoggerNG;
 import com.shash.autoNG.utils.clockUtil.ClockUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,15 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("unchecked")
 public abstract class BasePage<T> {
-    protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
+    protected static final LoggerNG logger = new LoggerNG();
     private static final long REFRESH_RATE = 2000;
     private static final long PAGE_LOAD_TIME_OUT = 10000;
     private WebDriver driver;
