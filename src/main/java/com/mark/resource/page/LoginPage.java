@@ -15,6 +15,11 @@ public class LoginPage extends BasePage<LoginPage> {
     private static final String PASSWORD_ID = "login-password";
     private static final String LOGIN_BTN_XPATH = ".//*[@id='landmarkLoginForm']/fieldset/div[6]/input";
 
+
+
+
+
+
     private Header header;
     private Footer footer;
     private SearchBar searchBar;
@@ -66,4 +71,9 @@ public class LoginPage extends BasePage<LoginPage> {
         getWebElement(By.xpath(LOGIN_BTN_XPATH)).click();
         return new AccountPage(getDriver()).getPage(AccountPage.class);
     }
+
+
+
+
+
 }
