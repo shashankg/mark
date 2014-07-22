@@ -3,7 +3,7 @@ package com.mark.smoke;
 import com.mark.BaseTest;
 import com.mark.constant.Messages;
 import com.mark.resource.page.*;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MyAccountTest extends BaseTest {

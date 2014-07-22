@@ -4,8 +4,9 @@ import com.mark.configuration.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,7 @@ public class WebDriverFactory {
     private static final Logger logger = LoggerFactory.getLogger(WebDriverFactory.class);
 
     public enum DriverType {
-        CHROME, FIREFOX, HTML_UNIT_DRIVER, IE, SAFARI
+        CHROME, FIREFOX, HEADLESS, IE, SAFARI
     }
 
     /**
@@ -32,8 +33,9 @@ public class WebDriverFactory {
                 return new FirefoxDriver();
             case CHROME:
                 return new ChromeDriver();
-            case HTML_UNIT_DRIVER:
-                return new HtmlUnitDriver();
+            case HEADLESS:
+                DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
+                return new PhantomJSDriver(capabilities);
             case IE:
                 return new InternetExplorerDriver();
             case SAFARI:
