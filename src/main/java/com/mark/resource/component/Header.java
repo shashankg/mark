@@ -33,6 +33,8 @@ public class Header extends BasePage<Header> {
     private static final String BASKET_ITEM_COUNT_CLASS = "basket-count";
     private static final String BASKET_FIRST_ITEM_REMOVE_LINK_CLASS = "deleteRowButton";
 
+    private static final String REMEMBER_ME_CHECKBOX_ID ="check2";
+
     public Header(WebDriver webDriver) {
         super(webDriver);
     }
@@ -222,5 +224,10 @@ public class Header extends BasePage<Header> {
         getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).click();
         sleep("Waiting for Dropdown to apprea");
         getWebElement(By.className(BASKET_FIRST_ITEM_REMOVE_LINK_CLASS)).click();
+    }
+
+    public void rememberMe(Boolean isRememberMe)
+    {
+        if (isRememberMe) getWebElement(By.id(REMEMBER_ME_CHECKBOX_ID)).click();
     }
 }

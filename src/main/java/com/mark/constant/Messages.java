@@ -22,4 +22,13 @@ public class Messages {
      * Message for unlinking the Shukran account
      */
     public static final String MESSAGE_FOR_UNLINK_SHUKRAN_ACCOUNT = "Unlink your card";
+
+    /**
+     * Message to enter email address while clicking on Forgot Password link
+     */
+    public static final String MESSAGE_TO_ENTER_EMAIL_FOR_RESET_PASSWORD="Please enter your email address.";
+    /**
+     * Message when password is successfully reset and send to email ID
+     */
+    public static final String MESSAGE_OF_SUCCESSFUL_PASSWORD_RESET= "Thanks, a reset password link is on its way to your inbox";
 }
