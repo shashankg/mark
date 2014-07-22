@@ -175,7 +175,7 @@ public abstract class BasePage<T> {
         driver.navigate().refresh();
     }
 
-    public void waitFor(String reason) {
+    public void sleep(String reason) {
         try {
             ClockUtil.sleepingFor(reason, Configuration.getGlobalSleepTimeInMS());
         } catch (InterruptedException e) {

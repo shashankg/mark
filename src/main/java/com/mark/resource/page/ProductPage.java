@@ -54,6 +54,6 @@ public class ProductPage extends BasePage<ProductPage> {
         logger.info("[Product Page] Trying to add product to basket with quantity {}", quantity);
         selectFromDropDown(By.id(QUANTITY_DD_ID), String.valueOf(quantity));
         getWebElement(By.id(ADD_TO_BASKET_ID)).click();
-        waitFor("[Product Page] Waiting for product to get added to the basket.");
+        sleep("[Product Page] Waiting for product to get added to the basket.");
     }
 }

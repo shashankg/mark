@@ -49,6 +49,7 @@ public class ShukranHomePage extends BasePage<ShukranHomePage> {
      */
     public String clickUnlinkShukranAccountAndGetMessage() {
         getWebElement(By.cssSelector(UNLINK_MESSAGE_CSS)).click();
+        sleep("Pop up to load");
         String message = getWebElement(By.cssSelector(POP_UP_MESSAGE_CSS)).getText();
         getWebElement(By.cssSelector(POP_UP_CLOSE_CSS)).click();
         return message;

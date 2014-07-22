@@ -3,5 +3,5 @@ localhost:
     baseUrl: "http://www.landmarkshops.com"
 
   testConfig:
-    driverType: Firefox
+    driverType: headless
     globalSleepTimeInMS: 5000

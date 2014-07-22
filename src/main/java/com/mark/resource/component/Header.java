@@ -219,6 +219,8 @@ public class Header extends BasePage<Header> {
      */
     public void removeFirstItemFromBasket() {
         getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).click();
+        sleep("Waiting for basket to appear");
         getWebElement(By.className(BASKET_FIRST_ITEM_REMOVE_LINK_CLASS)).click();
+        sleep("Waiting for removal of item from basket");
     }
 }

@@ -2,6 +2,7 @@ package com.mark.smoke;
 
 import com.mark.BaseTest;
 import com.mark.constant.Messages;
+import com.mark.dataprovider.MarkTestData;
 import com.mark.resource.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,12 +12,12 @@ public class MyAccountTest extends BaseTest {
     @Test(groups = {"smoke"})
     public void test_saving_a_new_address_in_address_book() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        homePage.getHeader().login(username, password);
+        homePage.getHeader().login(MarkTestData.username, MarkTestData.password);
         sleep("Login Completion");
         AccountPage accountPage = homePage.getHeader().navigateToMyAccount();
         AddressBookPage addressBookPage = accountPage.navigateToAddressBook().
-                saveAddress(randomString, randomString, randomString, randomString,
-                        randomString, randomString, randomString, randomString, false, false);
+                saveAddress(MarkTestData.randomString, MarkTestData.randomString, MarkTestData.randomString, MarkTestData.randomString,
+                        MarkTestData.randomString, MarkTestData.randomString, MarkTestData.randomString, MarkTestData.randomString, false, false);
 
         //Assert that address is saved
     }
@@ -26,7 +27,7 @@ public class MyAccountTest extends BaseTest {
         AccountPage accountPage = signupAndGetAccountPage();
         CreateShukranPage createShukranPage = accountPage.navigateToShukran().navigateToCreateShukranPage();
         ShukranHomePage shukranHomePage = createShukranPage.createShukranAccount("India", "UAE", "Dubai",
-                randomString, randomString, 122122, "1234567890");
+                MarkTestData.randomString, MarkTestData.randomString, 122122, "1234567890");
         String successMessage = shukranHomePage.getSuccessfulShukranAccountMessage();
         Assert.assertEquals(successMessage, Messages.SHUKRAN_ACCOUNT_CREATED_MESSAGE);
     }
@@ -36,7 +37,7 @@ public class MyAccountTest extends BaseTest {
         AccountPage accountPage = signupAndGetAccountPage();
         CreateShukranPage createShukranPage = accountPage.navigateToShukran().navigateToCreateShukranPage();
         ShukranHomePage shukranHomePage = createShukranPage.createShukranAccount("India", "UAE", "Dubai",
-                randomString, randomString, 122122, "1234567890");
+                MarkTestData.randomString, MarkTestData.randomString, 122122, "1234567890");
 
         Assert.assertEquals(shukranHomePage.getUnlinkShukranMessage(), Messages.MESSAGE_FOR_UNLINK_SHUKRAN_ACCOUNT);
         Assert.assertEquals(shukranHomePage.clickUnlinkShukranAccountAndGetMessage(), Messages.UNLINK_POP_UP_MESSAGE);
@@ -45,7 +46,7 @@ public class MyAccountTest extends BaseTest {
     @Test(groups = {"smoke"})
     public void test_saving_card() {
         HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        homePage.getHeader().login(username, password);
+        homePage.getHeader().login(MarkTestData.username, MarkTestData.password);
         AccountPage accountPage = homePage.getHeader().navigateToMyAccount();
         PaymentOptionsPage paymentOptionsPage;
         paymentOptionsPage = accountPage.navigateToPaymentOptions();
