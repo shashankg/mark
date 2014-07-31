@@ -5,6 +5,7 @@ import com.mark.dataprovider.MarkTestData;
 import com.mark.factory.WebDriverFactory;
 import com.mark.resource.page.AccountPage;
 import com.mark.resource.page.SignupPage;
+import com.shash.autoNG.core.logger.LoggerNG;
 import com.shash.autoNG.utils.clockUtil.ClockUtil;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ import java.io.File;
 import java.lang.reflect.Method;
 
 public class BaseTest {
-    protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
+    protected static  LoggerNG logger = new LoggerNG();
     protected static final String BASE_URL = Configuration.getBaseUrl();
 
     private static final String PHANTOM_LOG = "phantomjsdriver.log";

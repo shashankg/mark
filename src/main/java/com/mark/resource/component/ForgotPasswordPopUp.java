@@ -50,6 +50,8 @@ public class ForgotPasswordPopUp extends BasePage<ForgotPasswordPopUp> {
     /**
      * Close the pop up
      */
+
+
     public void closePopUp() {
         getWebElement(By.id(CLOSE_POP_UP_XPATH)).click();
     }

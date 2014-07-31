@@ -5,10 +5,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static org.testng.Assert.assertTrue;
 
 public class ExampleTest {
 
@@ -17,17 +20,17 @@ public class ExampleTest {
         // String baseURL = "http://www.landmarkshops.com/";
        // String baseURL = "http://www.landmarkshops.com/Electronics/Electronics/Audio/Headphone-%26-Earphones/Earbud-%26-In-Ear-Headphones/Sennheiser-CX-300-II-Earphones---Chrome/p/154007163";
         //String baseURL = "http://www.landmarkshops.com";
-        String baseURL = "https://www.landmarkshops.com/login";
+        String baseURL = "https://www.landmarkshops.com";
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
         driver.get(baseURL);
-        driver.findElement(By.xpath(".//*[@id='header']/div[1]/div/div/ul/li[1]/a[2]")).click();
+        //driver.findElement(By.xpath(".//*[@id='header']/div[1]/div/div/ul/li[1]/a[2]")).click();
 
-        driver.findElement(By.id("j_username")).sendKeys("test12345@test.com");
-        driver.findElement(By.id("fakej_password")).clear();
-        driver.findElement(By.id("j_password")).sendKeys("test@12345");
-        driver.findElement(By.id("login")).click();
+        //driver.findElement(By.id("j_username")).sendKeys("test12345@test.com");
+        //driver.findElement(By.id("fakej_password")).clear();
+        //driver.findElement(By.id("j_password")).sendKeys("test@12345");
+        //driver.findElement(By.id("login")).click();
 
         //driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
         //driver.findElement(By.xpath(".//*[@id='header']/div[1]/div/div/ul/li[1]/a[1]")).click();
@@ -265,7 +268,7 @@ public class ExampleTest {
 //        driver.findElement(By.id("save-changes")).click();
 
 
-         driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[7]/a")).click();
+        // driver.findElement(By.xpath(".//*[@id='main']/div/div/div[3]/div/ul/li[7]/a")).click();
 
 //            driver.findElement(By.xpath(".//*[@id='main']/div/fieldset/div/div[2]/div/div/a")).click();
 //         //cancel_button_xpath = .//*[@id='creditCardForm']/div[9]/a
@@ -273,19 +276,84 @@ public class ExampleTest {
 //            driver.findElement(By.id("ccf-name")).sendKeys("test");
 //            driver.findElement(By.id("")).sendKeys();
 
+
+        //verification of breadcrum
+//
+//        //Women Section
+//        Actions build1 = new Actions(driver);
+//        WebElement hoverwomen = driver.findElement(By.xpath(".//*[@id='women']/a"));
+//        build1.moveToElement(hoverwomen).build().perform();
+//        WebElement womensection = driver.findElement(By.xpath(".//*[@id='nav__women-regular']"));
+//        List<WebElement> alllinkswomen=womensection.findElements(By.tagName("a"));
+//        for(WebElement value:alllinkswomen)
+//        {
+//            System.out.println(value.getText());
+//        }
+//
+//        System.out.println("no of links" +alllinkswomen.size());
+//
+//
+////      Men section
+//        Actions build2 = new Actions(driver);
+//        WebElement hovermen = driver.findElement(By.xpath(".//*[@id='men']/a"));
+//        build2.moveToElement(hovermen).build().perform();
+//        WebElement mensection = driver.findElement(By.xpath(".//*[@id='nav__men-regular']"));
+//        List<WebElement> alllinksmen=driver.findElements(By.tagName("a"));
+//        for(WebElement value:alllinksmen)
+//        {
+//            System.out.println(value.getText());
+//        }
+//
+//        System.out.println("no of links" +alllinksmen.size());
+
+
+
+// Verification of details on product page for an item with no color or size variance
+
+//        Actions build3 = new Actions(driver);
+//        WebElement hoverelectronic = driver.findElement(By.xpath(".//*[@id='electronics']/a"));
+//        build3.moveToElement(hoverelectronic).build().perform();
+//         driver.findElement(By.xpath(".//*[@id='nav__electronics-electronics']/ul[3]/li/ul/li[2]/a")).click();
+//         driver.findElement(By.xpath(".//*[@id='main']/div/div[3]/div[1]/div[3]/div[1]/div[1]/div/a/img")).click();
+//
+//        driver.findElement(By.xpath(".//*[@id='productPriceBlock']/strong")).getText();
+//        driver.findElement(By.id("addToBasket")).click();
+
+
+ //Verification of details on product page with color variance and its selection functionality
+
+//        Actions build3 = new Actions(driver);
+//        WebElement hoverclothes = driver.findElement(By.xpath(".//*[@id='women']/a"));
+//        build3.moveToElement(hoverclothes).build().perform();
+//        driver.findElement(By.linkText("Shrugs")).click();
+//        driver.findElement(By.xpath(".//*[@id='main']/div/div[3]/div[1]/div[3]/div[2]/div[1]/div/a/img")).click();
+//        driver.findElement(By.xpath(".//*[@id='6009522']/div[2]/div[2]/form/div[1]/div[1]/label[1]/span[2]/img")).click();
+//        driver.findElement(By.xpath(".//*[@id='sizeSelectPanel']/label[3]/span")).click();
+//
+//        if(driver.findElement(By.xpath(".//*[@id='inStockStatus']")).getText().equalsIgnoreCase("In Stock Online"))
+//        {
+//        driver.findElement(By.id("addToBasket")).click();
+//        }
+
+
+        //Verification of product details for Out of stock item
+
+        Actions build3 = new Actions(driver);
+        WebElement hoverclothes = driver.findElement(By.xpath(".//*[@id='women']/a"));
+        build3.moveToElement(hoverclothes).build().perform();
+        driver.findElement(By.linkText("Sweaters")).click();
+        driver.findElement(By.xpath(".//*[@id='main']/div/div[3]/div[1]/div[3]/div[1]/div[1]/div/a/img")).click();
+        if(driver.findElement(By.xpath(".//*[@id='outOfStockStatus']")).getText().equalsIgnoreCase("Sold out"))
+        {
+            driver.findElement(By.id("notifemail")).sendKeys("test1234@test.com");
+            driver.findElement(By.xpath(".//*[@id='stocknotif__wrapper--default']/button")).click();
+           if(driver.findElement(By.xpath(".//*[@id='stocknotif__wrapper--success']/p[2]/i")).isDisplayed())
+            {
+                System.out.print("Email sent");
+            }
+
         }
-
-
-
-
-
-
-
-
     }
 
 
-
-
-
-
+}
