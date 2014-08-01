@@ -31,4 +31,10 @@ public class Messages {
      * Message when password is successfully reset and send to email ID
      */
     public static final String MESSAGE_OF_SUCCESSFUL_PASSWORD_RESET= "Thanks, a reset password link is on its way to your inbox";
+
+
+    /**
+     * Message after successfully sending the email DI for notification when the product is in Stock
+     */
+    public static final String MESSAGE_AFTER_SENDING_EMAIL_FOR_NOTIFY = "You'll hear from us when it's back in stock.";
 }

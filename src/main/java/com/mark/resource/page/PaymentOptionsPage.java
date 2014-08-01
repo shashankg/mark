@@ -51,8 +51,8 @@ public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
         getWebElement(By.xpath(PAYMENT_OPTION_LINK_XPATH)).click();
         getWebElement(By.id(CARD_NUMBER_ID)).sendKeys(cardNumber);
         getWebElement(By.id(CARD_HOLDER_NAME_ID)).sendKeys(cardHolderName);
-        selectFromDropDown(By.id(EXPIRY_MONTH_ID), expiryMonth);
-        selectFromDropDown(By.id(EXPIRY_YEAR_ID), expiryYear);
+        selectFromDropDown(By.id(EXPIRY_MONTH_ID), String.valueOf(expiryMonth));
+        selectFromDropDown(By.id(EXPIRY_YEAR_ID), String.valueOf(expiryYear));
         getWebElement(By.id(CVV_ID)).sendKeys(cvv);
         if (isSaveAsDefault) getWebElement(By.id(SAVE_AS_DEFAULT_CHECKBOX_ID)).click();
         getWebElement(By.id(NICKNAME_ID)).sendKeys(nickName);

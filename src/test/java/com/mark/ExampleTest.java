@@ -341,7 +341,7 @@ public class ExampleTest {
         Actions build3 = new Actions(driver);
         WebElement hoverclothes = driver.findElement(By.xpath(".//*[@id='women']/a"));
         build3.moveToElement(hoverclothes).build().perform();
-        driver.findElement(By.linkText("Sweaters")).click();
+        driver.findElement(By.linkText("Shrugs")).click();
         driver.findElement(By.xpath(".//*[@id='main']/div/div[3]/div[1]/div[3]/div[1]/div[1]/div/a/img")).click();
         if(driver.findElement(By.xpath(".//*[@id='outOfStockStatus']")).getText().equalsIgnoreCase("Sold out"))
         {
