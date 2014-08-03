@@ -33,4 +33,8 @@ public class LoginAssertion extends BaseAssertion {
         Assert.assertFalse(header.isLoggedIn());
         logger.info("[Assertion] Login was not successful, as expected");
     }
+
+    public  static void assertResetPasswordAndMail(String forgotPasswordMsg) {
+        Assert.assertEquals(forgotPasswordMsg, Messages.RESET_PASSWORD_MESSAGE);
+    }
 }

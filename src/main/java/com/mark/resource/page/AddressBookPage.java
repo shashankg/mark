@@ -44,6 +44,7 @@ public class AddressBookPage extends BasePage<AddressBookPage> {
     private static final String EDIT_COUNTRY_TEXTBOX_ID = "";
     private static final String EDIT_REGIONS_TEXTBOX_ID = "";
     private static final String EDIT_PHONE_TEXTBOX_ID = "";
+    private static final String FIRST_DEFAULT_ADDRESS_CSS = "div.area:nth-child(2)";
 
     /**
      * Constructor
@@ -70,7 +71,6 @@ public class AddressBookPage extends BasePage<AddressBookPage> {
     public AddressBookPage editDetaultAddressdetails(int index, String nickName, String firstName, String lastName, String addressLine1,
                                                      String addressLine2, String country, String state, String phone,
                                                      boolean isDefaultShippingAddress, boolean isDefaultBillingAddress) {
-
         clickEditOnDefaultAddress(index);
         getWebElement(By.id(ADDRESS_BOOK_LINK_XPATH)).click();
         getWebElement(By.id(EDIT_NICKNAME_TEXTFIELD_ID)).clear();
@@ -136,16 +136,17 @@ public class AddressBookPage extends BasePage<AddressBookPage> {
      * Save new address
      */
     public AddressBookPage saveAddress(String nickName, String firstName, String lastName, String addressLine1,
-                                       String addressLine2, String country, String state, String phone,
+                                       String addressLine2, String country, String city, String phone,
                                        boolean isDefaultShippingAddress, boolean isDefaultBillingAddress) {
         getWebElement(By.xpath(ADD_ADDRESS_BUTTON_XPATH)).click();
+        sleep("");
         getWebElement(By.id(NICK_NAME_TEXTBOX_ID)).sendKeys(nickName);
         getWebElement(By.id(FIRST_NAME_TEXTBOX_ID)).sendKeys(firstName);
         getWebElement(By.id(LAST_NAME_TEXTBOX_ID)).sendKeys(lastName);
         getWebElement(By.id(LINE1_TEXTBOX_ID)).sendKeys(addressLine1);
         getWebElement(By.id(LINE2_TEXTBOX_ID)).sendKeys(addressLine2);
         selectFromDropDown((By.id(COUNTRY_TEXTBOX_ID)), country);
-        selectFromDropDown((By.id(REGIONS_TEXTBOX_ID)), state);
+        selectFromDropDown((By.id(REGIONS_TEXTBOX_ID)), city);
         getWebElement(By.id(PHONE_TEXTBOX_ID)).sendKeys(phone);
 
         if (isDefaultShippingAddress) getWebElement(By.id(DEFAULT_SHIPPING_ADDRESS_ID)).click();
@@ -153,6 +154,14 @@ public class AddressBookPage extends BasePage<AddressBookPage> {
 
         getWebElement(By.id(SAVED_ADDRESS_BUTTON_ID)).click();
         return new AddressBookPage(getDriver()).getPage(AddressBookPage.class);
+    }
+
+    public boolean isFirstDefaultAddressAdded() {
+        return isElementPresentAndDisplay(By.cssSelector(FIRST_DEFAULT_ADDRESS_CSS));
+    }
+
+    public String getFirstDefaultAddressAdded() {
+        return getWebElement(By.cssSelector(FIRST_DEFAULT_ADDRESS_CSS)).getText();
     }
 
     /**

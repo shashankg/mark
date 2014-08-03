@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class SearchResultPage extends BasePage<SearchResultPage> {
     private static final String ERROR_MESSAGE_XPATH = ".//*[@id='main']/div/div[2]/h3";
     private static final String FIRST_ITEM_XPATH = ".//*[@id='main']/div/div[2]/fieldset/div[1]/div[2]/div[1]/div[2]/h4/a";
+    private static final String SEARCHED_QUANTITY_CSS = ".qty > span:nth-child(1)";
 
     /**
      * Constructor
@@ -60,10 +61,13 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
     }
 
     /**
-     *
      * @return
      */
     public boolean isSearchResultDisplayed() {
         return isElementPresent(By.xpath(FIRST_ITEM_XPATH));
+    }
+
+    public int getCountOfSearchedProducts() {
+        return Integer.parseInt(getWebElement(By.cssSelector(SEARCHED_QUANTITY_CSS)).getText().replace("(", "").replace(")", ""));
     }
 }

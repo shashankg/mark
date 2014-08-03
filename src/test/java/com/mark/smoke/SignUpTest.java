@@ -2,7 +2,7 @@ package com.mark.smoke;
 
 import com.mark.BaseTest;
 import com.mark.constant.Messages;
-import com.mark.dataprovider.MarkTestData;
+import com.mark.dataprovider.TestData;
 import com.mark.resource.component.Header;
 import com.mark.resource.page.AccountPage;
 import com.mark.resource.page.HomePage;
@@ -31,17 +31,20 @@ public class SignUpTest extends BaseTest {
     @Test(groups = {"smoke"})
     public void test_successful_sign_up() {
         SignupPage signupPage = new SignupPage(getDriver()).openPage(SignupPage.class, BASE_URL);
-        AccountPage accountPage = signupPage.signUp(MarkTestData.firstName, MarkTestData.lastName, MarkTestData.email,
-                MarkTestData.password, MarkTestData.password, MarkTestData.gender);
+        AccountPage accountPage = signupPage.signUp(TestData.firstName, TestData.lastName, TestData.email,
+                TestData.password, TestData.password, TestData.gender);
 
-        //FIXME: Assert for account details on account page
+        Assert.assertTrue(accountPage.getAccountDetails().contains("MY DETAILS"));
+        Assert.assertTrue(accountPage.getAccountDetails().contains(TestData.firstName));
+        Assert.assertTrue(accountPage.getAccountDetails().contains(TestData.lastName));
+        Assert.assertTrue(accountPage.getAccountDetails().contains("Male"));
     }
 
     @Test(groups = {"smoke"}, dependsOnMethods = {"test_successful_sign_up"})
     public void test_sign_up_for_empty_email() {
         SignupPage signupPage = new SignupPage(getDriver()).openPage(SignupPage.class, BASE_URL);
-        signupPage.signUp(MarkTestData.firstName, MarkTestData.lastName, "", MarkTestData.password,
-                MarkTestData.password, MarkTestData.gender);
+        signupPage.signUp(TestData.firstName, TestData.lastName, "", TestData.password,
+                TestData.password, TestData.gender);
         String error = signupPage.getErrorMessage();
 
         Assert.assertEquals(error, Messages.SIGNUP_ERROR_MESSAGE);
@@ -50,8 +53,8 @@ public class SignUpTest extends BaseTest {
     @Test(groups = {"smoke"}, dependsOnMethods = {"test_successful_sign_up"})
     public void test_sign_up_for_diff_password_and_confirm_password() {
         SignupPage signupPage = new SignupPage(getDriver()).openPage(SignupPage.class, BASE_URL);
-        signupPage.signUp(MarkTestData.firstName, MarkTestData.lastName, MarkTestData.email,
-                MarkTestData.password, MarkTestData.password + "123", MarkTestData.gender);
+        signupPage.signUp(TestData.firstName, TestData.lastName, TestData.email,
+                TestData.password, TestData.password + "123", TestData.gender);
         String error = signupPage.getErrorMessage();
 
         Assert.assertEquals(error, Messages.SIGNUP_ERROR_MESSAGE);

@@ -1,15 +1,13 @@
 package com.mark;
 
 import com.mark.configuration.Configuration;
-import com.mark.dataprovider.MarkTestData;
+import com.mark.dataprovider.TestData;
 import com.mark.factory.WebDriverFactory;
 import com.mark.resource.page.AccountPage;
 import com.mark.resource.page.SignupPage;
 import com.shash.autoNG.core.logger.LoggerNG;
 import com.shash.autoNG.utils.clockUtil.ClockUtil;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -90,8 +88,8 @@ public class BaseTest {
     protected AccountPage signupAndGetAccountPage() {
         String email = System.currentTimeMillis() + "@email.com";
         SignupPage signupPage = new SignupPage(getDriver()).openPage(SignupPage.class, BASE_URL);
-        return signupPage.signUp(MarkTestData.randomString, MarkTestData.randomString, email,
-                MarkTestData.password, MarkTestData.password, MarkTestData.gender);
+        return signupPage.signUp(TestData.randomString, TestData.randomString, email,
+                TestData.password, TestData.password, TestData.gender);
     }
 
 

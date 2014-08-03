@@ -36,6 +36,7 @@ public class SearchBar extends BasePage<SearchBar> {
      */
     public SearchResultPage search(String lookingFor) {
         logger.info("[Search] Looking for: {}", lookingFor);
+        getWebElement(By.id(SEARCH_BAR_ID)).clear();
         getWebElement(By.id(SEARCH_BAR_ID)).sendKeys(lookingFor);
         getWebElement(By.xpath(SEARCH_BTN_XPATH)).click();
         return new SearchResultPage(getDriver()).getPage(SearchResultPage.class);

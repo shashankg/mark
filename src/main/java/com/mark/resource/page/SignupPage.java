@@ -19,7 +19,7 @@ public class SignupPage extends BasePage<SignupPage> {
     private static final String CONFIRM_PASSWORD_ID = "confirmPassword";
     private static final String GENDER_ID = "gender";
     private static final String SIGN_UP_XPATH = ".//*[@id='registerForm']/fieldset/div[8]/input";
-    private static final String ERROR_MESSAGE_XPATH = ".//*[@id='registerForm']/div/span";
+    private static final String ERROR_MESSAGE_CSS = "span.error-text:nth-child(1)";
 
     private Header header;
     private Footer footer;
@@ -103,6 +103,6 @@ public class SignupPage extends BasePage<SignupPage> {
      * @return
      */
     public String getErrorMessage() {
-        return getWebElement(By.xpath(ERROR_MESSAGE_XPATH)).getText();
+        return getWebElement(By.cssSelector(ERROR_MESSAGE_CSS)).getText();
     }
 }

@@ -26,15 +26,21 @@ public class Messages {
     /**
      * Message to enter email address while clicking on Forgot Password link
      */
-    public static final String MESSAGE_TO_ENTER_EMAIL_FOR_RESET_PASSWORD="Please enter your email address.";
+    public static final String MESSAGE_TO_ENTER_EMAIL_FOR_RESET_PASSWORD = "Please enter your email address.";
     /**
      * Message when password is successfully reset and send to email ID
      */
-    public static final String MESSAGE_OF_SUCCESSFUL_PASSWORD_RESET= "Thanks, a reset password link is on its way to your inbox";
+    public static final String MESSAGE_OF_SUCCESSFUL_PASSWORD_RESET = "Thanks, a reset password link is on its way to your inbox";
 
 
     /**
      * Message after successfully sending the email DI for notification when the product is in Stock
      */
     public static final String MESSAGE_AFTER_SENDING_EMAIL_FOR_NOTIFY = "You'll hear from us when it's back in stock.";
+
+
+    /**
+     * Forgot Password
+     */
+    public static final String RESET_PASSWORD_MESSAGE = "Thanks, a reset password link is on its way to your inbox";
 }

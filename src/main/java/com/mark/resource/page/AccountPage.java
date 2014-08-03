@@ -17,6 +17,7 @@ public class AccountPage extends BasePage<AccountPage> {
     private static final String ORDER_HISTORY_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[5]/a";
     private static final String MY_REVIEWS_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[6]/a";
     private static final String SHUKRAN_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[7]/a";
+    private static final String MY_ACCOUNT_DETAILS_CSS = ".col-main";
 
     private Header header;
     private Footer footer;
@@ -84,5 +85,9 @@ public class AccountPage extends BasePage<AccountPage> {
     public ShukranHomePage navigateToShukran() {
         getWebElement(By.xpath(SHUKRAN_XPATH)).click();
         return new ShukranHomePage(getDriver()).getPage(ShukranHomePage.class);
+    }
+
+    public String getAccountDetails(){
+        return getWebElement(By.cssSelector(MY_ACCOUNT_DETAILS_CSS)).getText().trim();
     }
 }

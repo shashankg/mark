@@ -17,7 +17,7 @@ public class ProductPage extends BasePage<ProductPage> {
     private static final String OUT_OF_STOCK_TEXT_XPATH = ".//*[@id='outOfStockStatus']";
     private static final String NOTIFY_TEXTBOX_ID = "notifemail";
     private static final String NOTIFY_BUTTON_XPATH = ".//*[@id='stocknotif__wrapper--default']/button";
-    private static final String NOTIFICATION_XPATH =".//*[@id='stocknotif__wrapper--success']/p[2]/i";
+    private static final String NOTIFICATION_XPATH = ".//*[@id='stocknotif__wrapper--success']/p[2]/i";
 
 
     private Header header;

@@ -16,7 +16,7 @@ public class Header extends BasePage<Header> {
     private static final String FAKE_PASSWORD_ID = "fakej_password";
     private static final String PASSWORD_ID = "j_password";
     private static final String LOGIN_BUTTON_ID = "login";
-    private static final String AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/a[1]/span";
+    private static final String AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_CSS = ".logged-link > span:nth-child(1)";
 
     private static final String MY_ACCOUNT_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[1]/a";
     private static final String ORDER_HISTORY_ID = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[2]";
@@ -33,7 +33,7 @@ public class Header extends BasePage<Header> {
     private static final String BASKET_ITEM_COUNT_CLASS = "basket-count";
     private static final String BASKET_FIRST_ITEM_REMOVE_LINK_CLASS = "deleteRowButton";
 
-    private static final String REMEMBER_ME_CHECKBOX_ID ="check2";
+    private static final String REMEMBER_ME_CHECKBOX_ID = "check2";
 
     public Header(WebDriver webDriver) {
         super(webDriver);
@@ -63,11 +63,11 @@ public class Header extends BasePage<Header> {
     }
 
     private void clickAtLoginAfterLogin() {
-        getWebElement(By.xpath(AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH)).click();
+        getWebElement(By.cssSelector(AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_CSS)).click();
     }
 
     public ForgotPasswordPopUp clickAtForgotPassword() {
-        clickAtLoginAfterLogin();
+        clickAtLoginBeforeLogin();
         getWebElement(By.xpath(FORGOT_PASSWORD_LINK_XPATH)).click();
         return new ForgotPasswordPopUp(getDriver()).getPage(ForgotPasswordPopUp.class);
     }
@@ -79,7 +79,7 @@ public class Header extends BasePage<Header> {
     }
 
     public boolean isLoggedIn() {
-        String loginText = getWebElement(By.xpath(AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_XPATH)).getText().trim();
+        String loginText = getWebElement(By.cssSelector(AFTER_LOGIN_TEXT_ON_LOGIN_FLYOUT_CSS)).getText().trim();
         return loginText.contains("Hello,");
     }
 
@@ -222,12 +222,11 @@ public class Header extends BasePage<Header> {
      */
     public void removeFirstItemFromBasket() {
         getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).click();
-        sleep("Waiting for Dropdown to appear");
+        sleep("Waiting for Drop down to appear");
         getWebElement(By.className(BASKET_FIRST_ITEM_REMOVE_LINK_CLASS)).click();
     }
 
-    public void rememberMe(Boolean isRememberMe)
-    {
+    public void rememberMe(Boolean isRememberMe) {
         if (isRememberMe) getWebElement(By.id(REMEMBER_ME_CHECKBOX_ID)).click();
     }
 }
