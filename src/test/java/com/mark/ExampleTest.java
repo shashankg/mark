@@ -338,21 +338,45 @@ public class ExampleTest {
 
         //Verification of product details for Out of stock item
 
-        Actions build3 = new Actions(driver);
-        WebElement hoverclothes = driver.findElement(By.xpath(".//*[@id='women']/a"));
-        build3.moveToElement(hoverclothes).build().perform();
-        driver.findElement(By.linkText("Shrugs")).click();
-        driver.findElement(By.xpath(".//*[@id='main']/div/div[3]/div[1]/div[3]/div[1]/div[1]/div/a/img")).click();
-        if(driver.findElement(By.xpath(".//*[@id='outOfStockStatus']")).getText().equalsIgnoreCase("Sold out"))
-        {
-            driver.findElement(By.id("notifemail")).sendKeys("test1234@test.com");
-            driver.findElement(By.xpath(".//*[@id='stocknotif__wrapper--default']/button")).click();
-           if(driver.findElement(By.xpath(".//*[@id='stocknotif__wrapper--success']/p[2]/i")).isDisplayed())
-            {
-                System.out.print("Email sent");
-            }
+//        Actions build3 = new Actions(driver);
+//        WebElement hoverclothes = driver.findElement(By.xpath(".//*[@id='women']/a"));
+//        build3.moveToElement(hoverclothes).build().perform();
+//        driver.findElement(By.linkText("Shrugs")).click();
+//        driver.findElement(By.xpath(".//*[@id='main']/div/div[3]/div[1]/div[3]/div[1]/div[1]/div/a/img")).click();
+//        if(driver.findElement(By.xpath(".//*[@id='outOfStockStatus']")).getText().equalsIgnoreCase("Sold out"))
+//        {
+//            driver.findElement(By.id("notifemail")).sendKeys("test1234@test.com");
+//            driver.findElement(By.xpath(".//*[@id='stocknotif__wrapper--default']/button")).click();
+//           if(driver.findElement(By.xpath(".//*[@id='stocknotif__wrapper--success']/p[2]/i")).isDisplayed())
+//            {
+//                System.out.print("Email sent");
+//            }
+//
+//        }
 
-        }
+        //Verification of links and text in footer
+
+
+//        WebElement footer = driver.findElement(By.xpath(".//*[@id='footer']/div[1]/div[2]"));
+//        List<WebElement> allLinksFooter=footer.findElements(By.tagName("a"));
+//        for(WebElement value:allLinksFooter)
+//        {
+//            System.out.println(value.getText());
+//
+//        }
+//
+//
+//        System.out.println("no of links" +allLinksFooter.size());
+
+        
+
+
+
+
+
+
+
+
     }
 
 
