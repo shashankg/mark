@@ -34,9 +34,7 @@ public class WebDriverFactory {
             case CHROME:
                 return new ChromeDriver();
             case HEADLESS:
-                System.out.println("here");
                 DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
-                System.out.println("here1");
                 return new PhantomJSDriver(capabilities);
             case IE:
                 return new InternetExplorerDriver();

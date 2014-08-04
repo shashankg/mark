@@ -22,6 +22,7 @@ public class AddPaymentOptionPopUp extends BasePage<AddPaymentOptionPopUp> {
     private static final String CITY_ID = "regions";
     private static final String PHONE_ID = "phone";
     private static final String SAVE_BUTTON_XPATH = ".//*[@id='creditCardForm']/div[9]/input";
+    private static final String ERROR_MSG_CSS = "span.error-text:nth-child(1)";
 
     /**
      * Constructor
@@ -61,6 +62,10 @@ public class AddPaymentOptionPopUp extends BasePage<AddPaymentOptionPopUp> {
         getWebElement(By.id(PHONE_ID)).sendKeys(phone);
         getWebElement(By.xpath(SAVE_BUTTON_XPATH)).click();
         return new PaymentOptionsPage(getDriver()).getPage(PaymentOptionsPage.class);
+    }
+
+    public String getErrorMessage(){
+        return getWebElement(By.cssSelector(ERROR_MSG_CSS)).getText().trim();
     }
 
 }

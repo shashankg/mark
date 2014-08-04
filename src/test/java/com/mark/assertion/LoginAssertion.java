@@ -34,7 +34,7 @@ public class LoginAssertion extends BaseAssertion {
         logger.info("[Assertion] Login was not successful, as expected");
     }
 
-    public  static void assertResetPasswordAndMail(String forgotPasswordMsg) {
+    public static void assertResetPasswordAndMail(String forgotPasswordMsg) {
         Assert.assertEquals(forgotPasswordMsg, Messages.RESET_PASSWORD_MESSAGE);
     }
 }

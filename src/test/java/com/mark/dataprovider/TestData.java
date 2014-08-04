@@ -26,4 +26,9 @@ public class TestData {
     public static final String gender = "male";
     public static final String nationality = "India";
     public static final String cc = "5555555555554444";
+    public static final int pincode = 122122;
+
+    public static final String FB_EMAIL = "landmarksmoke@gmail.com";
+    public static final String FB_PASS = "landmark@123";
+
 }

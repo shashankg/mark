@@ -28,4 +28,6 @@ public class Footer extends BasePage<Footer> {
     public String getPageUrl() {
         return "";
     }
+
+
 }

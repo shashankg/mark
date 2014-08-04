@@ -1,49 +1,43 @@
 package com.mark.smoke;
 
 import com.mark.BaseTest;
+import com.mark.assertion.BasketAssertion;
 import com.mark.dataprovider.TestData;
-import com.mark.resource.component.SearchResultPage;
 import com.mark.resource.page.HomePage;
 import com.mark.resource.page.ProductPage;
 import com.mark.resource.page.ShoppingBasketPage;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ShoppingBasketTest extends BaseTest {
 
     @Test(groups = {"smoke"})
     public void test_basket_flyout_is_visible() {
-        HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        Assert.assertTrue(homePage.getHeader().isBasketFlyoutVisible());
+        HomePage homePage = loadHomepage();
+        BasketAssertion.assertBasketIsVisible(homePage.getHeader());
     }
 
     @Test(groups = {"smoke"}, dependsOnMethods = "test_basket_flyout_is_visible")
     public void test_basket_flyout_is_disabled_when_basket_is_emtpy() {
-        HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        Assert.assertFalse(homePage.getHeader().isBasketFlyoutEnabled());
+        HomePage homePage = loadHomepage();
+        BasketAssertion.assertBasketIsDisableWhenEmpty(homePage.getHeader());
     }
 
     @Test(groups = {"smoke"}, dependsOnMethods = "test_basket_flyout_is_visible")
     public void test_adding_item_to_basket() {
-        HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        SearchResultPage searchResultPage = homePage.getSearchBar().search(TestData.searchKeyword);
-        ProductPage productPage = searchResultPage.clickOnFirstItem();
-        productPage.addProductToBasket(1);
+        ProductPage productPage = loadHomepage().getSearchBar().search(TestData.searchKeyword).
+                clickOnFirstItem().addProductToBasket(1);
 
         int basketItemCount = productPage.getHeader().getShoppingBasketItemCount();
-        Assert.assertEquals(basketItemCount, 1);
+        BasketAssertion.assertBasketItemCount(basketItemCount, 1);
     }
 
     @Test(groups = {"smoke"})
     public void test_removing_item_from_basket() {
-        HomePage homePage = new HomePage(getDriver()).openPage(HomePage.class, BASE_URL);
-        SearchResultPage searchResultPage = homePage.getSearchBar().search(TestData.searchKeyword);
-        ProductPage productPage = searchResultPage.clickOnFirstItem();
-        productPage.addProductToBasket(1);
-        ShoppingBasketPage shoppingBasketPage = new ShoppingBasketPage(getDriver()).openPage(ShoppingBasketPage.class, BASE_URL);
-        shoppingBasketPage.removeFirstItem();
+        loadHomepage().getSearchBar().search(TestData.searchKeyword).clickOnFirstItem().addProductToBasket(1);
+        ShoppingBasketPage shoppingBasketPage = loadShoppingBasketPage().removeFirstItem();
         shoppingBasketPage.refresh();
+
         int basketItemCount = shoppingBasketPage.getHeader().getShoppingBasketItemCount();
-        Assert.assertEquals(basketItemCount, 0);
+        BasketAssertion.assertBasketItemCount(basketItemCount, 0);
     }
 }

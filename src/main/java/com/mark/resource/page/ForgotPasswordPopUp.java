@@ -1,4 +1,4 @@
-package com.mark.resource.component;
+package com.mark.resource.page;
 
 import com.mark.resource.BasePage;
 import org.openqa.selenium.By;

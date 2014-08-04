@@ -44,7 +44,6 @@ public abstract class BasePage<T> {
         return page;
     }
 
-    @SuppressWarnings("unchecked")
     private void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
         logger.info("[Wait for Page load] Condition: {} ", pageLoadCondition);
         Wait wait = new FluentWait(driver).pollingEvery(REFRESH_RATE, TimeUnit.MILLISECONDS).
@@ -166,14 +165,25 @@ public abstract class BasePage<T> {
         return driver.findElement(by);
     }
 
+    /**
+     * @return thr driver
+     */
     protected WebDriver getDriver() {
         return driver;
     }
 
+    /**
+     * Refreshes the page
+     */
     public void refresh() {
         driver.navigate().refresh();
     }
 
+    /**
+     * Sleep
+     *
+     * @param reason
+     */
     public void sleep(String reason) {
         try {
             ClockUtil.sleepingFor(reason, Configuration.getGlobalSleepTimeInMS());

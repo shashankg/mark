@@ -10,7 +10,7 @@ public class Messages {
     /**
      * Signup Page Message
      */
-    public static final String SIGNUP_ERROR_MESSAGE = "Oops! There was a problem.";
+    public static final String GENERAL_ERROR_MESSAGE = "Oops! There was a problem.";
 
     /**
      * Shukran account successful creation message

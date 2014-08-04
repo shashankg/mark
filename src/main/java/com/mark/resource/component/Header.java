@@ -24,7 +24,7 @@ public class Header extends BasePage<Header> {
     private static final String LOGOUT_LINK_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/ul/li[4]/a";
 
     private static final String FORGOT_PASSWORD_LINK_XPATH = ".//*[@id='loginForm']/fieldset/div[3]/a";
-    private static final String LOGIN_VIA_FACEBOOK_ID = "facebook-login";
+    private static final String LOGIN_VIA_FACEBOOK_CSS = "#facebook-login";
 
     private static final String BASKET_CLASS = "basket btn-open";
     private static final String VIEW_BASKET_XPATH = ".//*[@id='wrap-basket-template']/div/table/tbody/tr[1]/td/a/span";
@@ -185,9 +185,16 @@ public class Header extends BasePage<Header> {
      */
     public boolean isLoginViaFBVisibleInLoginFlyout() {
         clickAtLoginBeforeLogin();
-        boolean isDisplayed = isElementPresentAndDisplay(By.id(LOGIN_VIA_FACEBOOK_ID));
+        boolean isDisplayed = isElementPresentAndDisplay(By.cssSelector(LOGIN_VIA_FACEBOOK_CSS));
         clickAtLoginBeforeLogin();
         return isDisplayed;
+    }
+
+    public FacebookLoginPage clickLoginViaFacebook(){
+//        clickAtLoginBeforeLogin();
+        getWebElement(By.xpath(LOGIN_FLYOUT_XPATH)).click();
+        getWebElement(By.cssSelector(LOGIN_VIA_FACEBOOK_CSS)).click();
+        return new FacebookLoginPage(getDriver()).getPage(FacebookLoginPage.class);
     }
 
     /**

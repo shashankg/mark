@@ -9,7 +9,6 @@ import org.testng.Assert;
 
 public class AccountAssertion extends BaseAssertion {
 
-
     public static void assertNewAddressSaved(AddressBookPage addressBookPage) {
         Assert.assertTrue(addressBookPage.isFirstDefaultAddressAdded());
         Assert.assertTrue(addressBookPage.getFirstDefaultAddressAdded().contains(TestData.country));
@@ -17,11 +16,11 @@ public class AccountAssertion extends BaseAssertion {
         Assert.assertTrue(addressBookPage.getFirstDefaultAddressAdded().contains(TestData.phone));
     }
 
-    public static void assertSuccessfulShukrantAcntCreation(String successMessage) {
+    public static void assertShukranAccountCreation(String successMessage) {
         Assert.assertEquals(successMessage, Messages.SHUKRAN_ACCOUNT_CREATED_MESSAGE);
     }
 
-    public static void assertUnlinkingOfShukranAcnt(ShukranHomePage shukranHomePage) {
+    public static void assertUnlinkingShukranAccount(ShukranHomePage shukranHomePage) {
         Assert.assertEquals(shukranHomePage.getUnlinkShukranMessage(), Messages.MESSAGE_FOR_UNLINK_SHUKRAN_ACCOUNT);
         Assert.assertEquals(shukranHomePage.clickUnlinkShukranAccountAndGetMessage(), Messages.UNLINK_POP_UP_MESSAGE);
     }
@@ -31,4 +30,7 @@ public class AccountAssertion extends BaseAssertion {
         Assert.assertTrue(paymentOptionsPage.getFirstPaymentOptionDetails().contains("XXXX XXXX XXXX 4444"));
     }
 
+    public static void assertErrorMessage(String errorMsg) {
+        Assert.assertEquals(errorMsg, Messages.GENERAL_ERROR_MESSAGE);
+    }
 }

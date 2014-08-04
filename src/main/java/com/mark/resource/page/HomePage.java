@@ -32,6 +32,7 @@ public class HomePage extends BasePage<HomePage> {
     private static final String NAVIGATION_OFFERS_CSS = "#offers > a:nth-child(1)";
     private static final String NAVIGATION_SHOP_BY_BRANDS_CSS = "#shop by brand > a:nth-child(1)";
 
+
     private Header header;
     private Footer footer;
     private SearchBar searchBar;
@@ -125,11 +126,11 @@ public class HomePage extends BasePage<HomePage> {
         return isElementPresentAndDisplay(By.cssSelector(NAVIGATION_HOME_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_WOMEN_id)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_MEN_CSS)) &&
-                isElementPresentAndDisplay(By.cssSelector(NAVIGATION_BABY_CSS)) &&
+//                isElementPresent(By.cssSelector(NAVIGATION_BABY_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_ELECTRONICS_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_LOOK_BOOK_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_COLLECTION_CSS)) &&
-                isElementPresentAndDisplay(By.cssSelector(NAVIGATION_OFFERS_CSS)) &&
-                isElementPresentAndDisplay(By.cssSelector(NAVIGATION_SHOP_BY_BRANDS_CSS));
+                isElementPresentAndDisplay(By.cssSelector(NAVIGATION_OFFERS_CSS));
+//                &&isElementPresent(By.cssSelector(NAVIGATION_SHOP_BY_BRANDS_CSS));
     }
 }

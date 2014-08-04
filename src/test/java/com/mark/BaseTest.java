@@ -3,8 +3,7 @@ package com.mark;
 import com.mark.configuration.Configuration;
 import com.mark.dataprovider.TestData;
 import com.mark.factory.WebDriverFactory;
-import com.mark.resource.page.AccountPage;
-import com.mark.resource.page.SignupPage;
+import com.mark.resource.page.*;
 import com.shash.autoNG.core.logger.LoggerNG;
 import com.shash.autoNG.utils.clockUtil.ClockUtil;
 import org.openqa.selenium.WebDriver;
@@ -17,12 +16,11 @@ import java.io.File;
 import java.lang.reflect.Method;
 
 public class BaseTest {
-    protected static  LoggerNG logger = new LoggerNG();
+    protected static LoggerNG logger = new LoggerNG();
     protected static final String BASE_URL = Configuration.getBaseUrl();
 
     private static final String PHANTOM_LOG = "phantomjsdriver.log";
     private static final String VELOCITY_LOG = "velocity.log";
-
 
     private WebDriver driver;
 
@@ -92,5 +90,39 @@ public class BaseTest {
                 TestData.password, TestData.password, TestData.gender);
     }
 
+    /**
+     * Loads homepage
+     *
+     * @return
+     */
+    protected HomePage loadHomepage() {
+        return new HomePage(driver).openPage(HomePage.class, BASE_URL);
+    }
 
+    /**
+     * Loads shopping basket page
+     *
+     * @return
+     */
+    protected ShoppingBasketPage loadShoppingBasketPage() {
+        return new ShoppingBasketPage(driver).openPage(ShoppingBasketPage.class, BASE_URL);
+    }
+
+    /**
+     * Loads login page
+     *
+     * @return
+     */
+    protected LoginPage loadLoginPage() {
+        return new LoginPage(driver).openPage(LoginPage.class, BASE_URL);
+    }
+
+    /**
+     * Loads SignUp page
+     *
+     * @return
+     */
+    protected SignupPage loadSignupPage() {
+        return new SignupPage(driver).openPage(SignupPage.class, BASE_URL);
+    }
 }
