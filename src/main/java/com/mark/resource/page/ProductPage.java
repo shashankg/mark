@@ -11,14 +11,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ProductPage extends BasePage<ProductPage> {
     private static final String ADD_TO_BASKET_ID = "addToBasket";
     private static final String QUANTITY_DD_ID = "quantity";
-    private static final String IN_STOCK_TEXT_XPATH = ".//*[@id='inStockStatus']";
-    private static final String COLOR_XPATH = "";
-    private static final String SIZE_XPATH = "";
-    private static final String OUT_OF_STOCK_TEXT_XPATH = ".//*[@id='outOfStockStatus']";
-    private static final String NOTIFY_TEXTBOX_ID = "notifemail";
-    private static final String NOTIFY_BUTTON_XPATH = ".//*[@id='stocknotif__wrapper--default']/button";
-    private static final String NOTIFICATION_XPATH = ".//*[@id='stocknotif__wrapper--success']/p[2]/i";
+    private static final String SIZE_CSS = "label.size-radio:nth-child(2) > span:nth-child(2)";
+    private static final String COLOR_CSS = ".color-radio > input:nth-child(1)";
 
+    private static final String BREADCRUMB_CSS = ".breadcrumbs";
+    private static final String PRICE_CSS = "strong.price:nth-child(3)";
 
     private Header header;
     private Footer footer;
@@ -66,33 +63,54 @@ public class ProductPage extends BasePage<ProductPage> {
         return this;
     }
 
-    public void addProductWithNoColorAndSizeVarianceToBasket() {
-        logger.info("[Product Page] Trying to add product to basket with quantity {}");
-        if (getWebElement(By.xpath(IN_STOCK_TEXT_XPATH)).getText().equalsIgnoreCase("In Stock Online")) {
-            getWebElement(By.id(ADD_TO_BASKET_ID)).click();
-        }
+    /**
+     * add a product to the basket with color and size
+     *
+     * @param quantity
+     * @return
+     */
+    public ProductPage addProductToBasketWithSize(int quantity) {
+        logger.info("[Product Page] Trying to add product to basket with quantity {}", quantity);
+        selectFromDropDown(By.id(QUANTITY_DD_ID), String.valueOf(quantity));
+        getWebElement(By.cssSelector(SIZE_CSS)).click();
+        getWebElement(By.id(ADD_TO_BASKET_ID)).click();
         sleep("[Product Page] Waiting for product to get added to the basket.");
+        return this;
     }
 
-    public void addProductWithColorAndSizeVarianceToBasket() {
-        logger.info("[Product Page] Trying to add product to basket with quantity {}");
-        getWebElement(By.xpath(COLOR_XPATH)).click();
-        getWebElement(By.xpath(SIZE_XPATH)).click();
-        if (getWebElement(By.xpath(IN_STOCK_TEXT_XPATH)).getText().equalsIgnoreCase("In Stock Online")) {
-            getWebElement(By.id(ADD_TO_BASKET_ID)).click();
-        }
-        sleep("[Product Page] Waiting for product to get added to the basket.");
+    /**
+     * Is breadcrumb visible
+     *
+     * @return
+     */
+    public boolean isBreadcrumbVisible() {
+        return isElementPresentAndDisplay(By.cssSelector(BREADCRUMB_CSS));
     }
 
-    public void notifyProductNotAvailable(String email) {
-        logger.info("[Product Page] Trying to add product to basket with quantity {}");
-        if (getWebElement(By.xpath(OUT_OF_STOCK_TEXT_XPATH)).getText().equalsIgnoreCase("Sold out")) {
-            getWebElement(By.id(NOTIFY_TEXTBOX_ID)).sendKeys(email);
-            getWebElement(By.xpath(NOTIFY_BUTTON_XPATH)).click();
-        }
+    /**
+     * Is add to basket visible
+     *
+     * @return
+     */
+    public boolean isAddToBasketVisible() {
+        return isElementPresentAndDisplay(By.id(ADD_TO_BASKET_ID));
     }
 
-    public String getSuccessfulEmailRegisteredForNotify() {
-        return getWebElement(By.xpath(NOTIFICATION_XPATH)).getText();
+    /**
+     * Is add to basket visible
+     *
+     * @return
+     */
+    public boolean isQuantityVisible() {
+        return isElementPresentAndDisplay(By.id(QUANTITY_DD_ID));
+    }
+
+    /**
+     * Is price visible
+     *
+     * @return
+     */
+    public boolean isPriceVisible() {
+        return isElementPresentAndDisplay(By.cssSelector(PRICE_CSS));
     }
 }
