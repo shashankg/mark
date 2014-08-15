@@ -5,7 +5,7 @@ import com.mark.dataprovider.TestData;
 import com.mark.factory.WebDriverFactory;
 import com.mark.resource.page.*;
 import com.shash.autoNG.core.logger.LoggerNG;
-import com.shash.autoNG.utils.clockUtil.ClockUtil;
+import com.shash.autoNG.utils.time.ClockUtil;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -72,7 +72,7 @@ public class BaseTest {
      */
     protected void sleep(String reason) {
         try {
-            ClockUtil.sleepingFor(reason, Configuration.getGlobalSleepTimeInMS());
+            ClockUtil.sleeping(reason, Configuration.getGlobalSleepTimeInMS());
         } catch (InterruptedException e) {
             logger.info("[Sleeping] Not able to sleep, Error: {}", e.getMessage());
         }
