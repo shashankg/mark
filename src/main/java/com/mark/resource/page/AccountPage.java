@@ -1,9 +1,9 @@
 package com.mark.resource.page;
 
-import com.mark.resource.BasePage;
 import com.mark.resource.component.Footer;
 import com.mark.resource.component.Header;
 import com.mark.resource.component.SearchBar;
+import com.shash.autoNG.core.ui.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;

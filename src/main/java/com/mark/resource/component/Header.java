@@ -1,8 +1,8 @@
 package com.mark.resource.component;
 
 import com.mark.exception.MarkException;
-import com.mark.resource.BasePage;
 import com.mark.resource.page.*;
+import com.shash.autoNG.core.ui.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;

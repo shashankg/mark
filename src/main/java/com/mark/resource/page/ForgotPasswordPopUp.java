@@ -1,10 +1,11 @@
 package com.mark.resource.page;
 
-import com.mark.resource.BasePage;
+import com.shash.autoNG.core.ui.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class ForgotPasswordPopUp extends BasePage<ForgotPasswordPopUp> {
     private static final String FORGOT_EMAIL_ID_TEXTBOX_ID = "forgotPassword_email";

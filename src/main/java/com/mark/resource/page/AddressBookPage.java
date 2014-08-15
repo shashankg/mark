@@ -1,10 +1,11 @@
 package com.mark.resource.page;
 
-import com.mark.resource.BasePage;
+import com.shash.autoNG.core.ui.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class AddressBookPage extends BasePage<AddressBookPage> {
     private static final String ADD_ADDRESS_BUTTON_XPATH = ".//*[@id='main']/div/fieldset/div/div[2]/a";
