@@ -1,13 +1,14 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.mark.configuration.Configuration;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class ForgotPasswordPopUp extends BasePage<ForgotPasswordPopUp> {
+public class ForgotPasswordPopUp extends AutoNGBasePage<ForgotPasswordPopUp> {
     private static final String FORGOT_EMAIL_ID_TEXTBOX_ID = "forgotPassword_email";
     private static final String SEND_PASSWORD_ID = "forgotPasswordButton";
     private static final String CLOSE_POP_UP_XPATH = ".//*[@id='popup-enter-email']/a";
@@ -40,7 +41,7 @@ public class ForgotPasswordPopUp extends BasePage<ForgotPasswordPopUp> {
      * @param email
      */
     public ForgotPasswordPopUp forgotPassword(String email) {
-        sleep("PopUp to appear");
+        sleep("PopUp to appear", Configuration.getGlobalSleepTimeInMS());
         getWebElement(By.id(FORGOT_EMAIL_ID_TEXTBOX_ID)).clear();
         getWebElement(By.id(FORGOT_EMAIL_ID_TEXTBOX_ID)).sendKeys(email);
         getWebElement(By.id(SEND_PASSWORD_ID)).submit();

@@ -3,14 +3,14 @@ package com.mark.resource.page;
 import com.mark.resource.component.Footer;
 import com.mark.resource.component.Header;
 import com.mark.resource.component.SearchBar;
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class SignupPage extends BasePage<SignupPage> {
+public class SignupPage extends AutoNGBasePage<SignupPage> {
     private static final String FIRST_NAME_ID = "firstName";
     private static final String LAST_NAME_ID = "lastName";
     private static final String EMAIL_ID = "email";

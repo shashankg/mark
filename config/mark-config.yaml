@@ -1,6 +1,6 @@
 localhost:
   webConfig:
-    baseUrl:
+    baseUrl: "http://www.landmarkshops.com/"
 
   testConfig:
     driverType: headless

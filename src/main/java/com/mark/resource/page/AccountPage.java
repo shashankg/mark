@@ -3,13 +3,13 @@ package com.mark.resource.page;
 import com.mark.resource.component.Footer;
 import com.mark.resource.component.Header;
 import com.mark.resource.component.SearchBar;
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AccountPage extends BasePage<AccountPage> {
+public class AccountPage extends AutoNGBasePage<AccountPage> {
 
     private static final String MY_DETAILS_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[2]/a";
     private static final String ADDRESS_BOOK_XPATH = ".//*[@id='main']/div/div/div[3]/div/ul/li[3]/a";

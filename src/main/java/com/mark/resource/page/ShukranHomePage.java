@@ -1,6 +1,7 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.mark.configuration.Configuration;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 
-public class ShukranHomePage extends BasePage<ShukranHomePage> {
+public class ShukranHomePage extends AutoNGBasePage<ShukranHomePage> {
 
     private static final String SHUKRAN_LINK_XPATH = ".//*[@id='main']/div/fieldset/div[1]/div[2]/div/div[1]/div/div/div/div/a";
     private static final String UNLINK_MESSAGE_CSS = ".unlink > a:nth-child(1)";
@@ -50,7 +51,7 @@ public class ShukranHomePage extends BasePage<ShukranHomePage> {
      */
     public String clickUnlinkShukranAccountAndGetMessage() {
         getWebElement(By.cssSelector(UNLINK_MESSAGE_CSS)).click();
-        sleep("Pop up to load");
+        sleep("Pop up to load", Configuration.getGlobalSleepTimeInMS());
         String message = getWebElement(By.cssSelector(POP_UP_MESSAGE_CSS)).getText();
         getWebElement(By.cssSelector(POP_UP_CLOSE_CSS)).click();
         return message;

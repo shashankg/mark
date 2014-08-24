@@ -1,13 +1,13 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class SearchResultPage extends BasePage<SearchResultPage> {
+public class SearchResultPage extends AutoNGBasePage<SearchResultPage> {
     private static final String ERROR_MESSAGE_XPATH = ".//*[@id='main']/div/div[2]/h3";
     private static final String FIRST_ITEM_XPATH = ".//*[@id='main']/div/div[2]/fieldset/div[1]/div[2]/div[1]/div[2]/h4/a";
     private static final String SEARCHED_QUANTITY_CSS = ".qty > span:nth-child(1)";

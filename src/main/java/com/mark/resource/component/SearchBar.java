@@ -1,13 +1,13 @@
 package com.mark.resource.component;
 
 import com.mark.resource.page.SearchResultPage;
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class SearchBar extends BasePage<SearchBar> {
+public class SearchBar extends AutoNGBasePage<SearchBar> {
     private static final String SEARCH_BAR_ID = "text1";
     private static final String SEARCH_BTN_XPATH = ".//*[@id='search']/fieldset/input";
 

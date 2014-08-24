@@ -1,14 +1,15 @@
 package com.mark.resource.component;
 
+import com.mark.configuration.Configuration;
 import com.mark.exception.MarkException;
 import com.mark.resource.page.*;
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class Header extends BasePage<Header> {
+public class Header extends AutoNGBasePage<Header> {
 
     private static final String LOGIN_FLYOUT_XPATH = ".//*[@id='header']/div[1]/div/div/ul/li[1]/a[2]";
     private static final String SIGN_UP_LINK_XPATH = "//*[@id='header']/div[1]/div/div/ul/li[1]/div/div[2]/a";
@@ -229,7 +230,7 @@ public class Header extends BasePage<Header> {
      */
     public void removeFirstItemFromBasket() {
         getWebElement(By.className(BASKET_ITEM_COUNT_CLASS)).click();
-        sleep("Waiting for Drop down to appear");
+        sleep("Waiting for Drop down to appear", Configuration.getGlobalSleepTimeInMS());
         getWebElement(By.className(BASKET_FIRST_ITEM_REMOVE_LINK_CLASS)).click();
     }
 

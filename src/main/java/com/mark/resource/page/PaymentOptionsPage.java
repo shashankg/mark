@@ -1,13 +1,14 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.mark.configuration.Configuration;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
+public class PaymentOptionsPage extends AutoNGBasePage<PaymentOptionsPage> {
     private static final String ADD_PAYMENT_OPTION_LINK_CSS = ".title-with-link > a:nth-child(2)";
     private static final String FIRST_PAYMENT_OPTION_CSS = ".addresses-list > div:nth-child(2)";
 
@@ -32,7 +33,7 @@ public class PaymentOptionsPage extends BasePage<PaymentOptionsPage> {
 
     public AddPaymentOptionPopUp addNewPaymentOption() {
         getWebElement(By.cssSelector(ADD_PAYMENT_OPTION_LINK_CSS)).click();
-        sleep("Waiting for Popup to load.");
+        sleep("Waiting for Popup to load.", Configuration.getGlobalSleepTimeInMS());
         return new AddPaymentOptionPopUp(getDriver()).getPage(AddPaymentOptionPopUp.class);
     }
 

@@ -1,13 +1,14 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.mark.configuration.Configuration;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class AddressBookPage extends BasePage<AddressBookPage> {
+public class AddressBookPage extends AutoNGBasePage<AddressBookPage> {
     private static final String ADD_ADDRESS_BUTTON_XPATH = ".//*[@id='main']/div/fieldset/div/div[2]/a";
     private static final String NICK_NAME_TEXTBOX_ID = "addressNickName";
     private static final String FIRST_NAME_TEXTBOX_ID = "firstName";
@@ -51,7 +52,7 @@ public class AddressBookPage extends BasePage<AddressBookPage> {
                                        String addressLine2, String country, String city, String phone,
                                        boolean isDefaultShippingAddress, boolean isDefaultBillingAddress) {
         getWebElement(By.xpath(ADD_ADDRESS_BUTTON_XPATH)).click();
-        sleep("");
+        sleep("", Configuration.getGlobalSleepTimeInMS());
         getWebElement(By.id(NICK_NAME_TEXTBOX_ID)).sendKeys(nickName);
         getWebElement(By.id(FIRST_NAME_TEXTBOX_ID)).sendKeys(firstName);
         getWebElement(By.id(LAST_NAME_TEXTBOX_ID)).sendKeys(lastName);

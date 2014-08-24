@@ -1,12 +1,12 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AddPaymentOptionPopUp extends BasePage<AddPaymentOptionPopUp> {
+public class AddPaymentOptionPopUp extends AutoNGBasePage<AddPaymentOptionPopUp> {
     private static final String CARD_NUMBER_ID = "ccf-number";
     private static final String CARD_HOLDER_NAME_ID = "ccf-name";
     private static final String EXPIRY_MONTH_ID = "ccf-exp-month";

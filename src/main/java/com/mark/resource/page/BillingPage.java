@@ -1,13 +1,13 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class BillingPage extends BasePage<BillingPage> {
+public class BillingPage extends AutoNGBasePage<BillingPage> {
     private static final String CC_RADIO_BTN_ID = "creditcard";
     private static final String COD_RADIO_BTN_ID = "codPaymentMode";
     private static final String SAME_BILLING_ADDR_CHECKBOX_ID = "sameBillingAsShipping";

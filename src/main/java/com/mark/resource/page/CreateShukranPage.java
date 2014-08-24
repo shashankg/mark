@@ -1,13 +1,13 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class CreateShukranPage extends BasePage<CreateShukranPage> {
+public class CreateShukranPage extends AutoNGBasePage<CreateShukranPage> {
 
     private static final String CREATE_SHUKRAN_ACCOUNT_BUTTON_XPATH = ".//*[@id='main']/div/fieldset/div[1]/div[2]/div/div[1]/div/div/div/div/a";
     private static final String DOB_TEXTBOX_XPATH = ".//*[@id='create-shukran-account-form']/fieldset[1]/div[1]/img";

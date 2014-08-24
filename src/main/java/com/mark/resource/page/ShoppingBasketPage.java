@@ -2,14 +2,14 @@ package com.mark.resource.page;
 
 import com.mark.resource.component.Footer;
 import com.mark.resource.component.Header;
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class ShoppingBasketPage extends BasePage<ShoppingBasketPage> {
+public class ShoppingBasketPage extends AutoNGBasePage<ShoppingBasketPage> {
     private static final String CHECKOUT_NOW_CSS = "div.action:nth-child(1) > form:nth-child(1) > input:nth-child(1)";
     private static final String REMOVE_FIRST_ITEM_CSS = ".removeFromBasket";
 

@@ -1,6 +1,6 @@
 package com.mark.dataprovider;
 
-import com.shash.autoNG.utils.dataUtil.DataGenerator;
+import com.shash.autoNG.utils.data.DataGenerator;
 
 public class TestData {
     public static final String randomString = DataGenerator.generateAlphaNumericString(5);

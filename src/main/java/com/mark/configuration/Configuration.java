@@ -2,8 +2,8 @@ package com.mark.configuration;
 
 import com.mark.exception.MarkException;
 import com.shash.autoNG.core.logger.LoggerNG;
-import com.shash.autoNG.utils.jsonUtil.ObjectMapperUtil;
-import com.shash.autoNG.utils.yamlUtil.YamlUtil;
+import com.shash.autoNG.utils.data.ObjectMapperUtil;
+import com.shash.autoNG.utils.data.YamlUtil;
 
 import java.io.File;
 import java.io.IOException;

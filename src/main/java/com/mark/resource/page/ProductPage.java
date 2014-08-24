@@ -1,15 +1,16 @@
 package com.mark.resource.page;
 
+import com.mark.configuration.Configuration;
 import com.mark.resource.component.Footer;
 import com.mark.resource.component.Header;
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class ProductPage extends BasePage<ProductPage> {
+public class ProductPage extends AutoNGBasePage<ProductPage> {
     private static final String ADD_TO_BASKET_ID = "addToBasket";
     private static final String QUANTITY_DD_ID = "quantity";
     private static final String SIZE_CSS = "label.size-radio:nth-child(2) > span:nth-child(2)";
@@ -60,7 +61,7 @@ public class ProductPage extends BasePage<ProductPage> {
         logger.info("[Product Page] Trying to add product to basket with quantity {}", quantity);
         selectFromDropDown(By.id(QUANTITY_DD_ID), String.valueOf(quantity));
         getWebElement(By.id(ADD_TO_BASKET_ID)).click();
-        sleep("[Product Page] Waiting for product to get added to the basket.");
+        sleep("[Product Page] Waiting for product to get added to the basket.", Configuration.getGlobalSleepTimeInMS());
         return this;
     }
 
@@ -75,7 +76,7 @@ public class ProductPage extends BasePage<ProductPage> {
         selectFromDropDown(By.id(QUANTITY_DD_ID), String.valueOf(quantity));
         getWebElement(By.cssSelector(SIZE_CSS)).click();
         getWebElement(By.id(ADD_TO_BASKET_ID)).click();
-        sleep("[Product Page] Waiting for product to get added to the basket.");
+        sleep("[Product Page] Waiting for product to get added to the basket.", Configuration.getGlobalSleepTimeInMS());
         return this;
     }
 

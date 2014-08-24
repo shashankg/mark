@@ -3,14 +3,14 @@ package com.mark.resource.page;
 import com.mark.resource.component.Footer;
 import com.mark.resource.component.Header;
 import com.mark.resource.component.SearchBar;
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class HomePage extends BasePage<HomePage> {
+public class HomePage extends AutoNGBasePage<HomePage> {
     private static final String TOP_BANNER_CSS = ".sliders-holder > li:nth-child(2) > a:nth-child(1)";
     private static final String TOP_BANNER_NEXT_CSS = ".gallery-block > a:nth-child(2)";
     private static final String TOP_BANNER_PREVIOUS_CSS = ".gallery-block > a:nth-child(1)";

@@ -1,12 +1,12 @@
 package com.mark.resource.component;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class Footer extends BasePage<Footer> {
+public class Footer extends AutoNGBasePage<Footer> {
 
     private static final String FOOTER_ID = "footer";
 

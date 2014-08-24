@@ -1,13 +1,13 @@
 package com.mark.resource.page;
 
-import com.shash.autoNG.core.ui.BasePage;
+import com.shash.autoNG.core.ui.AutoNGBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class FacebookLoginPage extends BasePage<FacebookLoginPage> {
+public class FacebookLoginPage extends AutoNGBasePage<FacebookLoginPage> {
     private static final String USERNAME_ID = "email";
     private static final String PASSWORD_ID = "pass";
     private static final String LOGIN_ID = "u_0_1";
