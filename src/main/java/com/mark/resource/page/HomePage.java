@@ -127,11 +127,9 @@ public class HomePage extends AutoNGBasePage<HomePage> {
         return isElementPresentAndDisplay(By.cssSelector(NAVIGATION_HOME_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_WOMEN_id)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_MEN_CSS)) &&
-//                isElementPresent(By.cssSelector(NAVIGATION_BABY_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_ELECTRONICS_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_LOOK_BOOK_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_COLLECTION_CSS)) &&
                 isElementPresentAndDisplay(By.cssSelector(NAVIGATION_OFFERS_CSS));
-//                &&isElementPresent(By.cssSelector(NAVIGATION_SHOP_BY_BRANDS_CSS));
     }
 }

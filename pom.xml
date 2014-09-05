@@ -20,12 +20,24 @@
             <artifactId>core</artifactId>
             <groupId>com.shash.autoNG</groupId>
             <version>0.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <artifactId>utils</artifactId>
             <groupId>com.shash.autoNG</groupId>
             <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
         </dependency>
     </dependencies>
 
